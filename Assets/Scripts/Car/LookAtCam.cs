@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class LookAtCam : MonoBehaviour
 {
-    public Camera cameraToLookAt;
+    [SerializeField] private Camera cameraToLookAt;
+
+    private void Start() {
+        cameraToLookAt = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+    }
 
     void Update()
     {

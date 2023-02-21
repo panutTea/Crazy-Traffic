@@ -7,7 +7,7 @@ public class Cars : MonoBehaviour
     public int score;
     public float speed;
 
-    public enum MoveStates = {Stop, Moving};
+    public enum MoveStates {Stop, Moving};
     public MoveStates moveState = MoveStates.Stop;
 
     // Start is called before the first frame update

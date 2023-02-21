@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7572342637912401806
+--- !u!1 &379673348001771131
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7572342637912401805}
+  - component: {fileID: 1516424228943429694}
   m_Layer: 0
   m_Name: PathStraightTurnRight
   m_TagString: Untagged
@@ -16,23 +16,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7572342637912401805
+--- !u!4 &1516424228943429694
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572342637912401806}
+  m_GameObject: {fileID: 379673348001771131}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.61, y: 0, z: -13.87}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7572342638399950458}
-  - {fileID: 7572342638226094741}
+  - {fileID: 8398018541562156545}
+  - {fileID: 7237696539751529711}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &7572342638226094742
+--- !u!1 &4708288665880076653
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,8 +40,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7572342638226094741}
-  - component: {fileID: 7572342638226094740}
+  - component: {fileID: 7237696539751529711}
+  - component: {fileID: 1424714159301434918}
   m_Layer: 0
   m_Name: DollyCart1
   m_TagString: Untagged
@@ -49,38 +49,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7572342638226094741
+--- !u!4 &7237696539751529711
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572342638226094742}
+  m_GameObject: {fileID: 4708288665880076653}
   m_LocalRotation: {x: -0, y: 0.7086407, z: -0, w: 0.7055696}
-  m_LocalPosition: {x: -12.191568, y: 0, z: 3.4775763}
+  m_LocalPosition: {x: -12.19157, y: 0, z: 3.4775763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7572342637912401805}
+  m_Father: {fileID: 1516424228943429694}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7572342638226094740
+--- !u!114 &1424714159301434918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572342638226094742}
+  m_GameObject: {fileID: 4708288665880076653}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a9c787e5d1bbf48a389834c4a9641c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Path: {fileID: 7572342638399950459}
+  m_Path: {fileID: 6184711609785294488}
   m_UpdateMethod: 0
   m_PositionUnits: 1
   m_Speed: 10
   m_Position: 3.54
---- !u!1 &7572342638399950468
+--- !u!1 &7343204897335050434
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,8 +88,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7572342638399950458}
-  - component: {fileID: 7572342638399950459}
+  - component: {fileID: 8398018541562156545}
+  - component: {fileID: 6184711609785294488}
   m_Layer: 0
   m_Name: DollyTrack1
   m_TagString: Untagged
@@ -97,27 +97,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7572342638399950458
+--- !u!4 &8398018541562156545
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572342638399950468}
+  m_GameObject: {fileID: 7343204897335050434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 14.77, y: 0, z: 5.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7572342637912401805}
+  m_Father: {fileID: 1516424228943429694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7572342638399950459
+--- !u!114 &6184711609785294488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572342638399950468}
+  m_GameObject: {fileID: 7343204897335050434}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}

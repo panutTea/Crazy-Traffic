@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cars : MonoBehaviour
+public class WheelRotate : MonoBehaviour
 {
-    public int score;
-    public float speed;
-
     // Start is called before the first frame update
     void Start()
     {

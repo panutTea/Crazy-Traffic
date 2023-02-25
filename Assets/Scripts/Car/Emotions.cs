@@ -18,19 +18,25 @@ public class Emotions : MonoBehaviour
     public enum EmoStates {Happy, Good, Fine,  Anger, Furious};
     public float[] emoStateValueList = {0, 0.25f, 0.5f, 0.75f, 1};
 
-    public EmoStates emoState = EmoStates.Happy; 
+    public EmoStates emoState = EmoStates.Happy;
+
+    private Cars carScript;
 
     // Start is called before the first frame update
     void Start()
     {
         // Set maximum value of emotion bar
         emoBar.maxValue = EMO_MAXIUM;
+
+        carScript = GetComponent<Cars>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateEmotionValues();
+        if (carScript.moveState == Cars.MoveStates.Stop) {
+            UpdateEmotionValues();
+        }
     }
 
     void UpdateEmotionValues() {

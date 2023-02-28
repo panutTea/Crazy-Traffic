@@ -12,6 +12,8 @@ public class Emotions : MonoBehaviour
 
     // A value to increase emotion value per second
     public float emoIncreasingValue = 5;
+    // A value to decrease emotion value per second
+    public float emoDecreasingValue = -10;
     public float EMO_MAXIUM = 100;
 
     // State of emotion (5 states)
@@ -34,40 +36,35 @@ public class Emotions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (carScript.moveState == Cars.MoveStates.Stop) {
-            UpdateEmotionValues();
-        }
+        UpdateEmotionValues(carScript.moveState == Cars.MoveStates.Stop);
     }
 
-    void UpdateEmotionValues() {
-        emoValues += emoIncreasingValue * Time.deltaTime;
+    void UpdateEmotionValues(bool isIncrease) {
+        emoValues += (isIncrease ? emoIncreasingValue : emoDecreasingValue) * Time.deltaTime;
         emoBar.value = emoValues;
 
         // Change state
         if (emoValues >= emoStateValueList[4] * EMO_MAXIUM) {
             emoState = EmoStates.Furious;
             emoStateText.text = "Furious";
-            Debug.Log("Furious");
+            carScript.moveState = Cars.MoveStates.Moving;
+            carScript.canControl = false;
         }
         else if (emoValues >= emoStateValueList[3] * EMO_MAXIUM) {
             emoState = EmoStates.Anger;
             emoStateText.text = "Anger";
-            Debug.Log("Anger");
         }
         else if (emoValues >= emoStateValueList[2] * EMO_MAXIUM) {
             emoState = EmoStates.Fine;
             emoStateText.text = "Fine";
-            Debug.Log("Fine");
         }
         else if (emoValues >= emoStateValueList[1] * EMO_MAXIUM) {
             emoState = EmoStates.Good;
             emoStateText.text = "Good";
-            Debug.Log("Good");
         }
         else if (emoValues >= emoStateValueList[0] * EMO_MAXIUM) {
             emoState = EmoStates.Happy;
             emoStateText.text = "Happy";
-            Debug.Log("Happy");
         }
     }
 }

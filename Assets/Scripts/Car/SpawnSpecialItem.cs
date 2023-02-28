@@ -4,42 +4,35 @@ using UnityEngine;
 
 public class SpawnSpecialItem : MonoBehaviour
 {
+    public GameObject[] specialPrefabs;
 
-    private bool hasSpecial = false;
-    public Color outlineColor = Color.black;
-    public float duration = 1;
-
-    public float opportunity = 0.5f;
+    // Proportunity to spawn the special item range 0.0 - 1.0
+    public float spawnProp = 0.5f;
 
     private Outline outline;
     // Start is called before the first frame update
     void Start()
     {
-        RandomSpawn();
         outline = GetComponent<Outline>();
-        outline.OutlineColor = outlineColor;
+        RandomSpawn();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasSpecial) {
-            outline.enabled = true;
-            StartCoroutine(OutlineTiming());
-        } else {
-            outline.enabled = false;
-            StopAllCoroutines();
-        }
-    }
-
-    IEnumerator OutlineTiming() {
-        yield return new WaitForSeconds(duration);
-        hasSpecial = false;
+        
     }
 
     void RandomSpawn() {
+        // Random to attach special item to the car
         float random = Random.Range(0, 1.0f);
-        Debug.Log("Random spawn special value: " + random);
-        hasSpecial = random < opportunity;
+        outline.enabled = random < spawnProp;
+
+        // Random which special item that will attach
+        if (outline.enabled) {
+            int randomIndex = Random.Range(0, specialPrefabs.Length);
+            GameObject specialItem = specialPrefabs[randomIndex];
+            outline.OutlineColor = specialItem.GetComponent<SpecialItem>().outlineColor;
+        }
     }
 }

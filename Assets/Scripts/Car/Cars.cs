@@ -8,17 +8,18 @@ public class Cars : MonoBehaviour
     public float speed;
 
     public enum MoveStates {Stop, Moving};
-    public MoveStates moveState = MoveStates.Stop;
+    public MoveStates moveState;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public enum Lanes {Straight, Left, Right};
+    public Lanes lane;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public bool onLane;
+
+    public bool canControl;
+
+    private void Start() {
+        moveState = MoveStates.Moving;
+        onLane = true;
+        canControl = true;
     }
 }

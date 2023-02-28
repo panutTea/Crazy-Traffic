@@ -8,8 +8,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] carPrefabs;
     public GameObject[] pathPrefabs;
 
-    private float startDelay = 1;
-    private float repeatRate = 1;
+    private float startDelay = 1.5f;
+    private float repeatRate = 1.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
         GameObject currentCar = carPrefabs[carIndex];
         GameObject currentPath = Instantiate(pathPrefabs[pathIndex], spawnPathPos, pathPrefabs[pathIndex].transform.rotation);
         GameObject dollyCart = currentPath.transform.GetChild(1).gameObject;
-        dollyCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = 5;
+        dollyCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = currentCar.GetComponent<Cars>().speed;
         currentCar = Instantiate(currentCar, dollyCart.transform.position, dollyCart.transform.rotation);
 
 

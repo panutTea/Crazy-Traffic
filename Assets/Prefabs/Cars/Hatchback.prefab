@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 5
-  speed: 40
+  speed: 10
   moveState: 0
 --- !u!114 &1910332285807696184
 MonoBehaviour:

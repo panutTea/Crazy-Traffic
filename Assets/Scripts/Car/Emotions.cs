@@ -41,27 +41,27 @@ public class Emotions : MonoBehaviour
         if (emoValues >= emoStateValueList[4] * EMO_MAXIUM) {
             emoState = EmoStates.Furious;
             emoStateText.text = "Furious";
-            Debug.Log("Furious");
+            //Debug.Log("Furious");
         }
         else if (emoValues >= emoStateValueList[3] * EMO_MAXIUM) {
             emoState = EmoStates.Anger;
             emoStateText.text = "Anger";
-            Debug.Log("Anger");
+            //Debug.Log("Anger");
         }
         else if (emoValues >= emoStateValueList[2] * EMO_MAXIUM) {
             emoState = EmoStates.Fine;
             emoStateText.text = "Fine";
-            Debug.Log("Fine");
+            //Debug.Log("Fine");
         }
         else if (emoValues >= emoStateValueList[1] * EMO_MAXIUM) {
             emoState = EmoStates.Good;
             emoStateText.text = "Good";
-            Debug.Log("Good");
+            //Debug.Log("Good");
         }
         else if (emoValues >= emoStateValueList[0] * EMO_MAXIUM) {
             emoState = EmoStates.Happy;
             emoStateText.text = "Happy";
-            Debug.Log("Happy");
+           // Debug.Log("Happy");
         }
     }
 }

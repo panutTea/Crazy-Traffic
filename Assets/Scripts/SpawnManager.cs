@@ -35,9 +35,9 @@ public class SpawnManager : MonoBehaviour
         GameObject currentPath = Instantiate(pathPrefabs[pathIndex], spawnPathPos, pathPrefabs[pathIndex].transform.rotation);
         GameObject dollyCart = currentPath.transform.GetChild(1).gameObject;
         dollyCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = currentCar.GetComponent<Cars>().speed;
-        currentCar.GetComponent<Cars>().fromLane = lane;
-        currentCar.GetComponent<Cars>().targetLane = GetLaneTarget(pathIndex);
-        //Debug.Log("Spawn "+currentCar.transform.name + " Form "+currentCar.GetComponent<Cars>().fromLane+" To "+currentCar.GetComponent<Cars>().targetLane);
+        currentCar.GetComponent<CarSensor>().fromLane = lane;
+        currentCar.GetComponent<CarSensor>().targetLane = GetLaneTarget(pathIndex);
+        //Debug.Log("Spawn "+currentCar.transform.name + " Form "+currentCar.GetComponent<CarSensor>().fromLane+" To "+currentCar.GetComponent<CarSensor>().targetLane);
         currentCar = Instantiate(currentCar, dollyCart.transform.position, dollyCart.transform.rotation);
 
 

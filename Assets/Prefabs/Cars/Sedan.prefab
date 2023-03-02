@@ -149,6 +149,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a2bc8bfe050294a936ca7186870e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6414711197790496671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1085680800077393108}
+  m_Layer: 3
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085680800077393108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414711197790496671}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.12, y: 2.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7758067150001347062}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7038978391212991017
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +192,9 @@ GameObject:
   - component: {fileID: 4113653217634940850}
   - component: {fileID: 4113653217634940849}
   - component: {fileID: 4113653217634940853}
+  - component: {fileID: 1770262543}
+  - component: {fileID: 1770262544}
+  - component: {fileID: 5254622833639881900}
   m_Layer: 3
   m_Name: Sedan
   m_TagString: Car
@@ -186,6 +219,7 @@ Transform:
   - {fileID: 355625743482344056}
   - {fileID: 8468243833565916705}
   - {fileID: 7165267725813421492}
+  - {fileID: 1085680800077393108}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -233,10 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 5
   speed: 8
-  moveState: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
+  moveState: 1
 --- !u!114 &4113653217634940853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +283,7 @@ MonoBehaviour:
   emoBar: {fileID: 7879278299036784374}
   emoStateText: {fileID: 1125532543863217653}
   emoIncreasingValue: 5
+  emoDecreasingValue: -10
   EMO_MAXIUM: 100
   emoStateValueList:
   - 0
@@ -292,7 +324,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialPrefabs:
   - {fileID: 3735100133652467594, guid: 6479a91bc74367e44a1ac82bae07fcaa, type: 3}
+  spawnPointObject: {fileID: 6414711197790496671}
   spawnProp: 0.5
+--- !u!114 &5254622833639881900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038978391212991017}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9c6e9a6fb791f4680f50e974a08c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromLane: 0
+  targetLane: 0
+  laneStatus: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7500578625523586163
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +626,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f17ef3cb7358c549a670a1b1e04da92, type: 3}
+--- !u!114 &1125532543863217653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2251414452721974727, guid: 9f17ef3cb7358c549a670a1b1e04da92,
+    type: 3}
+  m_PrefabInstance: {fileID: 1197975533514104882}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7165267725813421492 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8345228856098665862, guid: 9f17ef3cb7358c549a670a1b1e04da92,
@@ -591,18 +654,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1125532543863217653 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2251414452721974727, guid: 9f17ef3cb7358c549a670a1b1e04da92,
-    type: 3}
-  m_PrefabInstance: {fileID: 1197975533514104882}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1674740233276809013

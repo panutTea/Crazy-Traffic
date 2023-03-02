@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002024585927347722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.88, y: 0, z: 18.42}
+  m_LocalPosition: {x: 0, y: 0, z: 18.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7772886358878804484}
@@ -50,15 +50,29 @@ MonoBehaviour:
     width: 0.2
   m_Looped: 0
   m_Waypoints:
-  - position: {x: -25.454165, y: 0, z: -1.995801}
+  - position: {x: -60.09818, y: 0, z: 13.57181}
     roll: 0
-  - position: {x: -9.122864, y: 0, z: -1.889473}
+  - position: {x: -60.239014, y: 0, z: 2.3428917}
     roll: 0
-  - position: {x: 0.1979711, y: 0, z: -2.9729605}
+  - position: {x: -58.44376, y: 0, z: -1.703524}
     roll: 0
-  - position: {x: 1.6891296, y: 0, z: -11.081791}
+  - position: {x: -42.41994, y: 0, z: -1.903429}
     roll: 0
-  - position: {x: 1.6359646, y: 0, z: -30.061878}
+  - position: {x: -10.292217, y: 0, z: -1.903429}
+    roll: 0
+  - position: {x: -0.60616803, y: 0, z: -2.6598387}
+    roll: 0
+  - position: {x: 0.023384571, y: 0, z: -9.002148}
+    roll: 0
+  - position: {x: -0.21763182, y: 0, z: -37.909927}
+    roll: 0
+  - position: {x: -0.14560747, y: 0, z: -68.503494}
+    roll: 0
+  - position: {x: -2.6345181, y: 0, z: -75.92511}
+    roll: 0
+  - position: {x: -7.184762, y: 0, z: -76.94438}
+    roll: 0
+  - position: {x: -19.316484, y: 0, z: -76.90732}
     roll: 0
 --- !u!1 &7645425853837997015
 GameObject:
@@ -84,8 +98,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7645425853837997015}
-  m_LocalRotation: {x: -0, y: -0.7047611, z: -0, w: -0.70944476}
-  m_LocalPosition: {x: -23.793594, y: 0, z: 16.447685}
+  m_LocalRotation: {x: -0, y: -0.9999959, z: -0, w: 0.0028833884}
+  m_LocalPosition: {x: -60.11437, y: 0, z: 28.450459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7772886358878804484}
@@ -117,6 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7772886358878804484}
+  - component: {fileID: 8292678528949831569}
   m_Layer: 0
   m_Name: PathRightTurnRight
   m_TagString: Untagged
@@ -140,3 +155,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &8292678528949831569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8080284346982883212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6cfd717fc66ac43bd4d96785132072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: 162

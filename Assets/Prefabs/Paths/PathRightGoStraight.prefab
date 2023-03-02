@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2709400433118517203}
+  - component: {fileID: -6646600401067610639}
   m_Layer: 0
   m_Name: PathRightGoStraight
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &-6646600401067610639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022111847992292544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6cfd717fc66ac43bd4d96785132072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: 135
 --- !u!1 &3708097972306664241
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,8 +70,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3708097972306664241}
-  m_LocalRotation: {x: -0, y: -0.7063705, z: -0, w: -0.70784235}
-  m_LocalPosition: {x: -20.684177, y: 0, z: 16.431568}
+  m_LocalRotation: {x: -0, y: -0.9999826, z: -0, w: 0.0059059393}
+  m_LocalPosition: {x: -60.19842, y: 0, z: 28.450996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2709400433118517203}
@@ -130,7 +144,21 @@ MonoBehaviour:
     width: 0.2
   m_Looped: 0
   m_Waypoints:
-  - position: {x: -25.454165, y: 0, z: -1.995801}
+  - position: {x: -61.3792, y: 0, z: 13.571812}
     roll: 0
-  - position: {x: 75.85555, y: 0, z: -1.889473}
+  - position: {x: -61.3792, y: 0, z: 2.3428917}
+    roll: 0
+  - position: {x: -58.44376, y: 0, z: -1.7035236}
+    roll: 0
+  - position: {x: -42.41994, y: 0, z: -1.903429}
+    roll: 0
+  - position: {x: -6.0138073, y: 0, z: -1.903429}
+    roll: 0
+  - position: {x: 33.58241, y: 0, z: -1.903429}
+    roll: 0
+  - position: {x: 47.820637, y: 0, z: -1.903429}
+    roll: 0
+  - position: {x: 49.35989, y: 0, z: 3.9035854}
+    roll: 0
+  - position: {x: 49.359894, y: 0, z: 14.302145}
     roll: 0

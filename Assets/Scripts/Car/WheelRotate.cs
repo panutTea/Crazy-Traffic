@@ -16,7 +16,7 @@ public class WheelRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (carScript.moveState == Cars.MoveStates.Moving) {
+        if (carScript.moveState == MoveStates.Moving) {
             transform.Rotate(Vector3.right * carScript.speed * Time.deltaTime);
         }
     }

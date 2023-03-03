@@ -18,14 +18,18 @@ public class Emotions : MonoBehaviour
 
 	private float emoValues;
 
+	[SerializeField]
 	// A value to increase emotion value per second
-	public float emoIncreasingValue = 5;
+	private float emoIncreasingValue = 5;
 	// A value to decrease emotion value per second
-	public float emoDecreasingValue = -10;
-	public float EMO_MAXIUM = 100;
+	[SerializeField]
+	private float emoDecreasingValue = -10;
+	[SerializeField]
+	private float EMO_MAXIUM = 100;
 
 	// State of emotion (5 states)
-	public float[] emoStateValueList = {0, 0.25f, 0.5f, 0.75f, 1};
+	[SerializeField]
+	private float[] emoStateValueList = {0, 0.25f, 0.5f, 0.75f, 1};
 
 	public EmoStates emoState = EmoStates.Happy;
 
@@ -62,29 +66,8 @@ public class Emotions : MonoBehaviour
 			if (emoValues >= emoStateValueList[i] * EMO_MAXIUM) {
 				emoState = (EmoStates) i;
 				emoStateText.text = ((EmoStates) i).ToString();
+				return;
 			}
 		}
-		// if (emoValues >= emoStateValueList[4] * EMO_MAXIUM) {
-		//     emoState = EmoStates.Furious;
-		//     emoStateText.text = "Furious";
-		//     carScript.moveState = MoveStates.Moving;
-		//     carScript.canControl = false;
-		// }
-		// else if (emoValues >= emoStateValueList[3] * EMO_MAXIUM) {
-		//     emoState = EmoStates.Anger;
-		//     emoStateText.text = "Anger";
-		// }
-		// else if (emoValues >= emoStateValueList[2] * EMO_MAXIUM) {
-		//     emoState = EmoStates.Fine;
-		//     emoStateText.text = "Fine";
-		// }
-		// else if (emoValues >= emoStateValueList[1] * EMO_MAXIUM) {
-		//     emoState = EmoStates.Good;
-		//     emoStateText.text = "Good";
-		// }
-		// else if (emoValues >= emoStateValueList[0] * EMO_MAXIUM) {
-		//     emoState = EmoStates.Happy;
-		//     emoStateText.text = "Happy";
-		// }
 	}
 }

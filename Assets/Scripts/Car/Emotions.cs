@@ -14,7 +14,9 @@ public enum EmoStates
 public class Emotions : MonoBehaviour
 {
 	public Slider emoBar;
-	public Text emoStateText;
+	// public Text emoStateText;
+	public GameObject emoji;
+	public Sprite[] emojiIcons;
 
 	private float emoValues;
 
@@ -65,8 +67,8 @@ public class Emotions : MonoBehaviour
 		for (int i = 0; i < emoStateValueList.Length; i++) {
 			if (emoValues >= emoStateValueList[i] * EMO_MAXIUM) {
 				emoState = (EmoStates) i;
-				emoStateText.text = ((EmoStates) i).ToString();
-				return;
+				// emoStateText.text = ((EmoStates) i).ToString();
+				emoji.GetComponent<SpriteRenderer>().sprite = emojiIcons[i];
 			}
 		}
 	}

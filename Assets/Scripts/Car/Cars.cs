@@ -12,8 +12,8 @@ public class Cars : MonoBehaviour
 	public int score { get; }
 	public float speed { get; }
 	
-	[SerializeField]
-	public MoveStates moveState { get; private set; }
+	// [SerializeField]
+	public MoveStates moveState;
 
 	// Start is called before the first frame update
 	void Start()

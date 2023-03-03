@@ -14,11 +14,10 @@ public enum EmoStates
 public class Emotions : MonoBehaviour
 {
 	public Slider emoBar;
-	// public Text emoStateText;
+	
 	public GameObject emoji;
+	
 	public Sprite[] emojiIcons;
-
-	private float emoValues;
 
 	[SerializeField]
 	// A value to increase emotion value per second
@@ -33,7 +32,7 @@ public class Emotions : MonoBehaviour
 	[SerializeField]
 	private float[] emoStateValueList = {0, 0.25f, 0.5f, 0.75f, 1};
 
-	public EmoStates emoState = EmoStates.Happy;
+	private EmoStates emoState = EmoStates.Happy;
 
 	private Cars carScript;
 
@@ -42,33 +41,46 @@ public class Emotions : MonoBehaviour
 	{
 		// Set maximum value of emotion bar
 		emoBar.maxValue = EMO_MAXIUM;
+		
+		emoBar.onValueChanged.AddListener(OnEmoValuesChange);
 
-		carScript = GetComponent<Cars>();
+		carScript = GetComponentInParent<Cars>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		UpdateEmotionValues(carScript.moveState == MoveStates.Stop);
+		UpdateEmotion(carScript.moveState == MoveStates.Stop);
 	}
 
-	void UpdateEmotionValues(bool isIncrease) {
-		if (isIncrease) 
+	void UpdateEmotion(bool isIncrease) {
+		// If car get furious will not increase or decrease emotion value
+		if (emoState == EmoStates.Furious && carScript.moveState == MoveStates.Stop) 
 		{
-			emoValues += emoIncreasingValue * Time.deltaTime;
+			carScript.Moving();
 		}
-		else if (emoValues > 0)
+		else if (emoState != EmoStates.Furious)
 		{
-			emoValues += emoDecreasingValue * Time.deltaTime;
+			if (isIncrease)
+			{
+				emoBar.value += emoIncreasingValue * Time.deltaTime;
+			}
+			else if (emoBar.value > 0)
+			{
+				emoBar.value += emoDecreasingValue * Time.deltaTime;
+			}
 		}
-		emoBar.value = emoValues;
-
-		// Change state
-		for (int i = 0; i < emoStateValueList.Length; i++) {
-			if (emoValues >= emoStateValueList[i] * EMO_MAXIUM) {
+	}
+	
+	void OnEmoValuesChange(float value) 
+	{
+		Debug.Log("Check");
+		// Check if emotion change or not
+		for (int i = emoStateValueList.Length - 1; i >= 0; i--) {
+			if (value >= emoStateValueList[i] * EMO_MAXIUM) {
 				emoState = (EmoStates) i;
-				// emoStateText.text = ((EmoStates) i).ToString();
 				emoji.GetComponent<SpriteRenderer>().sprite = emojiIcons[i];
+				return;
 			}
 		}
 	}

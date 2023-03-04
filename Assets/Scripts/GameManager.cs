@@ -5,8 +5,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int score;
+    private bool _isGameActive = true;
+    private bool _isGameOver = false;
 
-    public bool isGameActive;
+
+    public bool isGameOver
+    {
+        get { return _isGameOver; }
+    }
+    public bool isGameActive
+    { 
+        get { return _isGameActive; } 
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,19 +32,24 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
-        isGameActive = true;
+        _isGameActive = true;
         score = 0;
         UpdateScore(0);
     }
 
     public void GameOver()
     {
-        isGameActive = false;
+        Debug.Log("Game Over!  -- Score = "+ score);
+        _isGameActive = false;
+        _isGameOver = true;
+        
     }
 
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        Debug.Log(score);
+        //Debug.Log(score);
     }
+
+    
 }

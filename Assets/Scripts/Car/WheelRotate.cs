@@ -17,7 +17,7 @@ public class WheelRotate : MonoBehaviour
     void Update()
     {
         if (carScript.moveState == Cars.MoveStates.Moving) {
-            transform.Rotate(Vector3.right * carScript.speed * Time.deltaTime);
+            transform.Rotate(Vector3.right * carScript.currentSpeed * Time.deltaTime);
         }
     }
 }

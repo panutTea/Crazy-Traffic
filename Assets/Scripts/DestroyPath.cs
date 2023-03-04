@@ -24,11 +24,13 @@ public class DestroyPath : MonoBehaviour
     {
         if (dollyCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position > destination)
         {
-            // scoreToAdd is the car's score, which will change depending on the car's layout
-            int scoreToAdd = car.GetComponent<Cars>().score;
-            gameManager.UpdateScore(scoreToAdd);
+            if (!gameManager.isGameOver)
+            {
+                // scoreToAdd is the car's score, which will change depending on the car's layout
+                int scoreToAdd = car.GetComponent<Cars>().score;
+                gameManager.UpdateScore(scoreToAdd);
+            }
             Destroy(gameObject);
-            
         }
     }
 }

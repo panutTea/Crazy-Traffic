@@ -141,8 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b67cf107d429c4f9f7dd2ff3cc0e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accelerationRate: 5
+  brakeRate: 10
   score: 20
-  speed: 12
+  maxSpeed: 12
+  fromLane: 0
+  targetLane: 0
+  laneStatus: 0
   moveState: 0
   layerMask:
     serializedVersion: 2

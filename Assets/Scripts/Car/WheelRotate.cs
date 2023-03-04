@@ -11,11 +11,11 @@ public class WheelRotate : MonoBehaviour
 		carScript = GetComponentInParent<Cars>();
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-		if (carScript.moveState == MoveStates.Moving) {
-			transform.Rotate(Vector3.right * carScript.speed * Time.deltaTime);
-		}
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (carScript.moveState == MoveStates.Moving) {
+            transform.Rotate(Vector3.right * carScript.currentSpeed * Time.deltaTime);
+        }
+    }
 }

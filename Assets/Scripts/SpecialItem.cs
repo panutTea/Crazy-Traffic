@@ -24,7 +24,6 @@ public class SpecialItem : MonoBehaviour
 	{
 		if (transform.position.y > bottomBound && !isStart) 
 		{
-			Debug.Log("not start");
 			transform.Translate(Vector3.down * getDownSpeed * Time.deltaTime);
 			posOffset = transform.position;
 		} 

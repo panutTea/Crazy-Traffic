@@ -34,7 +34,7 @@ public class Emotions : MonoBehaviour
 
 	private EmoStates emoState = EmoStates.Happy;
 
-	private Cars carScript;
+	private Car carScript;
 
 	// Start is called before the first frame update
 	void Start()
@@ -44,7 +44,7 @@ public class Emotions : MonoBehaviour
 		
 		emoBar.onValueChanged.AddListener(OnEmoValuesChange);
 
-		carScript = GetComponentInParent<Cars>();
+		carScript = GetComponentInParent<Car>();
 	}
 
 	// Update is called once per frame
@@ -54,10 +54,18 @@ public class Emotions : MonoBehaviour
 	}
 
 	void UpdateEmotion(bool isIncrease) {
-		// If car get furious will not increase or decrease emotion value
-		if (emoState == EmoStates.Furious && carScript.moveState == MoveStates.Stop) 
+		// If car get crash, it will get furious immediatly
+		if (carScript.isCrash) 
 		{
-			carScript.Moving();
+			emoBar.value = EMO_MAXIUM;
+			emoState = EmoStates.Furious;
+		}
+		
+		// If car get furious will not increase or decrease emotion value
+		else if (emoState == EmoStates.Furious && carScript.moveState == MoveStates.Stop) 
+		{
+			Debug.Log("Furious");
+			carScript.isCrazy = true;
 		}
 		else if (emoState != EmoStates.Furious)
 		{
@@ -74,7 +82,6 @@ public class Emotions : MonoBehaviour
 	
 	void OnEmoValuesChange(float value) 
 	{
-		Debug.Log("Check");
 		// Check if emotion change or not
 		for (int i = emoStateValueList.Length - 1; i >= 0; i--) {
 			if (value >= emoStateValueList[i] * EMO_MAXIUM) {

@@ -20,9 +20,9 @@ public class Area : MonoBehaviour
    
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.transform.tag == "Car" && lane == other.gameObject.GetComponent<Cars>().targetLane)
+		if (other.transform.tag == "Car" && lane == other.gameObject.GetComponent<Car>().targetLane)
 		{
-			other.gameObject.GetComponent<Cars>().laneStatus = LaneStatus.OnTargetLane;
+			other.gameObject.GetComponent<Car>().laneStatus = LaneStatus.OnTargetLane;
 			
 			// Spawn special item
 			other.GetComponent<CarSpecialItem>().DropSpecialItem();
@@ -32,9 +32,9 @@ public class Area : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.transform.tag == "Car" && lane == other.gameObject.GetComponent<Cars>().fromLane)
+		if (other.transform.tag == "Car" && lane == other.gameObject.GetComponent<Car>().fromLane)
 		{
-			other.gameObject.GetComponent<Cars>().laneStatus = LaneStatus.OnCenter;
+			other.gameObject.GetComponent<Car>().laneStatus = LaneStatus.OnCenter;
 			//Debug.Log(other.gameObject.transform.name + " Form "+other.gameObject.GetComponent<CarSensor>().fromLane + " to "+other.gameObject.GetComponent<CarSensor>().targetLane + " status " + other.gameObject.GetComponent<CarSensor>().laneStatus);
 		}
 	}

@@ -11,6 +11,9 @@ public class CarSpecialItem : MonoBehaviour
 
 	// Proportunity to spawn the special item range 0.0 - 1.0
 	public float spawnProp = 0.5f;
+	
+	[SerializeField]
+	private float spawnTime;
 
 	private Outline outline;
 	
@@ -38,8 +41,15 @@ public class CarSpecialItem : MonoBehaviour
 	{
 		if (specialItem != null) 
 		{
-			Vector3 spawnPos = spawnPointObject.transform.position;
-			GameObject si = Instantiate(specialItem, spawnPos, specialItem.transform.rotation);
+			StartCoroutine(WaitToSpawn());
 		}
+	}
+	
+	IEnumerator WaitToSpawn() 
+	{
+		yield return new WaitForSeconds(spawnTime);
+		Vector3 spawnPos = spawnPointObject.transform.position;
+		GameObject si = Instantiate(specialItem, spawnPos, specialItem.transform.rotation);
+		outline.enabled = false;
 	}
 }

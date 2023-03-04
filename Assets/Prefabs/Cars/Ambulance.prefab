@@ -71,9 +71,8 @@ GameObject:
   - component: {fileID: 1211014037693071098}
   - component: {fileID: 1211014037693071097}
   - component: {fileID: 1211014037693071096}
-  - component: {fileID: 888562319}
   - component: {fileID: 888562320}
-  - component: {fileID: 4754918693237177972}
+  - component: {fileID: 1211014037693071076}
   m_Layer: 3
   m_Name: Ambulance
   m_TagString: Car
@@ -151,10 +150,25 @@ MonoBehaviour:
   fromLane: 0
   targetLane: 0
   laneStatus: 0
-  moveState: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &888562320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726411312705269008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac6f225851ff0f478e7bae3aae526b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialPrefabs:
+  - {fileID: 3735100133652467594, guid: 6479a91bc74367e44a1ac82bae07fcaa, type: 3}
+  spawnPointObject: {fileID: 5731525309251848680}
+  spawnProp: 1
 --- !u!114 &1211014037693071076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,40 +187,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &888562320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726411312705269008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dac6f225851ff0f478e7bae3aae526b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  specialPrefabs:
-  - {fileID: 3735100133652467594, guid: 6479a91bc74367e44a1ac82bae07fcaa, type: 3}
-  spawnPointObject: {fileID: 5731525309251848680}
-  spawnProp: 1
---- !u!114 &4754918693237177972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726411312705269008}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da9c6e9a6fb791f4680f50e974a08c89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fromLane: 0
-  targetLane: 0
-  laneStatus: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &2183508018851568458
 GameObject:
   m_ObjectHideFlags: 0

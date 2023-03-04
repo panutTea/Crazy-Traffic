@@ -6,7 +6,21 @@ public enum MoveStates
 {
 	Stop,
 	Moving
-};
+}
+
+public enum Lane
+{
+	Left,
+	Right,
+	Top
+}
+
+public enum LaneStatus
+{
+	OnFromLane,
+	OnCenter,
+	OnTargetLane
+}
 public class Cars : MonoBehaviour
 {
 	private float _currentSpeed = 0f; // Current speed of the car
@@ -35,8 +49,7 @@ public class Cars : MonoBehaviour
 	public Lane fromLane;
 	public Lane targetLane;
 	public LaneStatus laneStatus = LaneStatus.OnFromLane;
-   
-	public enum MoveStates {Stop, Moving};
+
 
 	public LayerMask layerMask;
 	
@@ -48,9 +61,9 @@ public class Cars : MonoBehaviour
 		moveState = MoveStates.Moving;
 		
 		dollyCart = gameObject.transform.parent.gameObject;
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        _currentMaxSpeed = maxSpeed;
-        _currentSpeed = _currentMaxSpeed;
+		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+		_currentMaxSpeed = maxSpeed;
+		_currentSpeed = _currentMaxSpeed;
 	}
 	
 	public void Moving() 

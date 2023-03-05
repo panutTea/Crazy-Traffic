@@ -50,7 +50,11 @@ public class Emotions : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		UpdateEmotion(carScript.moveState == MoveStates.Stop);
+		if (!carScript.isCrazy)
+        {
+			UpdateEmotion(carScript.moveState == MoveStates.Stop);
+		}
+			
 	}
 
 	void UpdateEmotion(bool isIncrease) {

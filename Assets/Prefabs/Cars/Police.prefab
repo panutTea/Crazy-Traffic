@@ -381,14 +381,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b67cf107d429c4f9f7dd2ff3cc0e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentSpeed: 0
-  _currentMaxSpeed: 0
   isCrazy: 0
   accelerationRate: 5
-  brakeRate: 30
+  brakeRate: 40
   score: 10
   maxSpeed: 15
-  fromLane: 2
+  fromLane: 0
   targetLane: 1
   laneStatus: 0
   layerMask:

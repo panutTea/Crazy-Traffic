@@ -143,16 +143,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b67cf107d429c4f9f7dd2ff3cc0e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentSpeed: 0
+  _currentMaxSpeed: 0
+  isCrazy: 0
   accelerationRate: 5
-  brakeRate: 10
+  brakeRate: 30
   score: 20
   maxSpeed: 12
-  fromLane: 2
+  fromLane: 1
   targetLane: 0
   laneStatus: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+  moveState: 0
 --- !u!114 &888562320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +707,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5644768925366931552, guid: 9f17ef3cb7358c549a670a1b1e04da92,
+        type: 3}
+      propertyPath: emoIncreasingValue
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6459725756859813019, guid: 9f17ef3cb7358c549a670a1b1e04da92,
         type: 3}
       propertyPath: m_Layer
@@ -921,6 +930,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7595957925918730532}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7325996141017814133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 028724a65b499cd4ebfc30add6eb1bde,
+    type: 3}
+  m_PrefabInstance: {fileID: 7595957925918730532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2126075494
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7325996141017814133}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87acedeaefdfa4447b0f1d945747b0ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &9060839647902090013
 PrefabInstance:
   m_ObjectHideFlags: 0

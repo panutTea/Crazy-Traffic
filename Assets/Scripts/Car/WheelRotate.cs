@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WheelRotate : MonoBehaviour
 {
-	private Cars carScript;
+	private Car carScript;
 	// Start is called before the first frame update
 	void Start()
 	{
-		carScript = GetComponentInParent<Cars>();
+		carScript = GetComponentInParent<Car>();
 	}
 
     // Update is called once per frame

@@ -50,7 +50,11 @@ public class Emotions : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		UpdateEmotion(carScript.moveState == MoveStates.Stop);
+		if (!carScript.isCrazy)
+        {
+			UpdateEmotion(carScript.moveState == MoveStates.Stop);
+		}
+			
 	}
 
 	void UpdateEmotion(bool isIncrease) {
@@ -64,7 +68,6 @@ public class Emotions : MonoBehaviour
 		// If car get furious will not increase or decrease emotion value
 		else if (emoState == EmoStates.Furious && carScript.moveState == MoveStates.Stop) 
 		{
-			Debug.Log("Furious");
 			carScript.isCrazy = true;
 		}
 		else if (emoState != EmoStates.Furious)

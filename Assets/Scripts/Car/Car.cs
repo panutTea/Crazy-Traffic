@@ -25,8 +25,8 @@ public enum LaneStatus
 }
 public class Car : MonoBehaviour
 {
-	public float currentSpeed; //{ get; private set; } // Current speed of the car
-	public float currentMaxSpeed; //{ get; private set; }
+	public float currentSpeed { get; private set; } // Current speed of the car
+	public float currentMaxSpeed { get; private set; }
 
 	private float sensorLength = 5f;
 	private float sensorAngle = 30;
@@ -100,7 +100,7 @@ public class Car : MonoBehaviour
 		}
 		
 		
-		// Debug //
+		// Debug try to controll //
 		// if (Input.GetKeyDown(KeyCode.Space)) 
 		// {
 		// 	if (moveState == MoveStates.Moving) 

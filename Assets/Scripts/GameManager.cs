@@ -1,39 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     private int score;
+    public bool isGameActive { get; private set; }
+    public bool isGameOver { get; private set; }
+    public int level { get; private set; }
 
-    public bool isGameActive;
+    public GameObject player;
+    public Image gameOver;
+    public TextMeshProUGUI lastScore;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (isGameActive && !isGameOver && Input.GetKeyDown(KeyCode.Return))
+        {
+            // The "Enter" key has been pressed
+            // Do something here, like print a message
+            Debug.Log("Game Over");
+            GameOver();
+        }
+
+        else if (isGameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                // The "Enter" key has been pressed
+                // Do something here, like print a message
+                Debug.Log("Restart Game");
+                RestartGame();
+            }
+        }
     }
 
-    public void StartGame(int difficulty)
+    public void StartGame()
     {
         isGameActive = true;
+        isGameOver = false;
+        level = 0;
         score = 0;
         UpdateScore(0);
     }
 
     public void GameOver()
     {
+        
+        Debug.Log("Game Over!  -- Score = "+ score);
+        
         isGameActive = false;
+        isGameOver = true;
+        lastScore.text = "Score: " + score;
+        gameOver.gameObject.SetActive(true);
+        Debug.Log("GameOver isGameActive = "+ isGameActive);
+
+
     }
 
+    public void RestartGame()
+    {
+        // Reset the game state to the beginning
+        gameOver.gameObject.SetActive(false);
+        SceneManager.LoadScene("City Scene");
+
+    }
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        Debug.Log(score);
     }
+
+    
 }

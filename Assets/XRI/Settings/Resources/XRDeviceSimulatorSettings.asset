@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690929a59dc7a42da9030305190d391f, type: 3}
   m_Name: XRDeviceSimulatorSettings
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_AutomaticallyInstantiateSimulatorPrefab: 1
   m_SimulatorPrefab: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
     type: 3}
+=======
+  m_AutomaticallyInstantiateSimulatorPrefab: 0
+  m_SimulatorPrefab: {fileID: 0}
+>>>>>>> fbf4ab072bca085b9bafbbb0af78b16897a31f2a

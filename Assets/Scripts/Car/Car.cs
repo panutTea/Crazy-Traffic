@@ -5,9 +5,9 @@ using UnityEngine;
 public enum MoveStates 
 {
 	Stop,
-	Speeding,
+	// Speeding,
 	Moving,
-	Braking
+	// Braking
 }
 
 public enum Lane
@@ -25,10 +25,8 @@ public enum LaneStatus
 }
 public class Car : MonoBehaviour
 {
-	//[SerializeField]
-	public float currentSpeed { get; private set; } // Current speed of the car
-	//[SerializeField]
-	public float currentMaxSpeed { get; private set; }
+	public float currentSpeed; //{ get; private set; } // Current speed of the car
+	public float currentMaxSpeed; //{ get; private set; }
 
 	private float sensorLength = 5f;
 	private float sensorAngle = 30;
@@ -66,105 +64,86 @@ public class Car : MonoBehaviour
 		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 		currentMaxSpeed = maxSpeed;
 		currentSpeed = currentMaxSpeed;
-		
-		moveState = MoveStates.Speeding;
 	}
 	
 	// Update is called once per frame
 	void Update()
 	{
+		if (currentSpeed == 0 && moveState == MoveStates.Moving) 
+		{
+			moveState = MoveStates.Stop;
+			animator.SetBool("Moving", false);
+		}
+		else if (currentSpeed != 0 && moveState == MoveStates.Stop)
+		{
+			moveState = MoveStates.Moving;
+			animator.SetBool("Moving", true);
+		}
+		
 		if (!isCrash)
 		{
 			// If car is stop
-			if (currentMaxSpeed == 0 && moveState == MoveStates.Braking) 
+			if (currentMaxSpeed == 0 && currentSpeed != 0) 
 			{
-				Debug.Log("Stoping No Crash");
 				Stop();
 			}
 			
 			// If car is moving
-			else if (currentMaxSpeed != 0)
+			else if (currentMaxSpeed != 0 && currentSpeed != currentMaxSpeed)
 			{
 				Moving();
 			}
 		}
-		else if (isCrash && moveState != MoveStates.Stop)
+		else if (moveState != MoveStates.Stop)
 		{
-			Debug.Log("Stoping Crash");
 			Stop();
 		}
 		
 		
 		// Debug //
-		if (Input.GetKeyDown(KeyCode.Space)) 
-		{
-			if (moveState == MoveStates.Moving) 
-			{
-				StopCar();
-			} else { ReleaseCar(); }
-		};
+		// if (Input.GetKeyDown(KeyCode.Space)) 
+		// {
+		// 	if (moveState == MoveStates.Moving) 
+		// 	{
+		// 		StopCar();
+		// 	} else { ReleaseCar(); }
+		// };
 	}
 
 	void FixedUpdate()
 	{
-		if (isCrazy)
+		if (isCrazy && !isCrash)
 		{
-			if (isCrash)
-			{
-				currentMaxSpeed = 0;
-				moveState = MoveStates.Braking;
-			}
-			else
-			{
-				currentMaxSpeed = maxSpeed;
-
-			}
+			currentMaxSpeed = maxSpeed;
 		}
 		else if (!isCrash)
 		{
 			CarSensor();
-			
 		}
 		
 	}
 
 	public void ReleaseCar() 
 	{
-		Debug.Log("ReleaseCar");
 		isForcedStop = false;
-		moveState = MoveStates.Speeding;
-		
-		//Debug
-		// _currentMaxSpeed = maxSpeed;
 	}
 	
 	public void StopCar() 
 	{
-		// Debug.Log("StopCar");
 		isForcedStop = true;
 		currentMaxSpeed = 0;
-		moveState = MoveStates.Braking;
 	}
 	
 	// Set car to move for moveState and animation
 	private void Moving() 
 	{
-		if (moveState == MoveStates.Speeding) 
-		{
-			// Debug.Log("Moving");
-			animator.SetBool("Moving", true);
-			moveState = MoveStates.Moving;
-		}
-		
 		// For speeding up and braking
 		if (currentSpeed < currentMaxSpeed)
 		{
-			// Debug.Log("Speeding");
 			SpeedUp();
 		}
 		else if (currentSpeed > currentMaxSpeed)
 		{
-			// Debug.Log("Braking");
 			Brake();
 		}
 	}
@@ -172,16 +151,9 @@ public class Car : MonoBehaviour
 	// Set car to stop for moveState and animation
 	private void Stop()
 	{
-		
-		animator.SetBool("Moving", false);
 		if (currentSpeed != 0)
 		{
 			Brake();
-		}
-		else 
-		{
-			moveState = MoveStates.Stop;
-			Debug.Log("MoveStates = Stop");
 		}
 	}
 	
@@ -256,16 +228,6 @@ public class Car : MonoBehaviour
 			if (isCenterRay && !isForcedStop)
 			{
 				currentMaxSpeed = maxSpeed;
-				if (moveState == MoveStates.Stop)
-                {
-					moveState = MoveStates.Speeding;
-					//Debug.Log(gameObject.name +  " isCenterRay from Stop");
-                } 
-				else
-                {
-					moveState = MoveStates.Moving;
-					//Debug.Log(gameObject.name + " isCenterRay from Other");
-				}
 			}
 			//Debug.DrawLine(sensorStartPos, sensorStartPos + sensorDirection * sensorLength, Color.green);
 		}
@@ -276,18 +238,10 @@ public class Car : MonoBehaviour
 		float o_speed = hit.collider.gameObject.transform.GetComponent<Car>().currentMaxSpeed;
 		
 		if ( o_speed < currentMaxSpeed )
-        {
-			moveState = MoveStates.Braking;
+		{
 			currentMaxSpeed = o_speed;
 			//Debug.Log(gameObject.name + " "+ hit.collider.gameObject.name+" Detect to Braking");
 		}
-		else if (o_speed != 0 && o_speed >= currentMaxSpeed)
-        {
-			moveState = MoveStates.Moving;
-			//Debug.Log(gameObject.name + " "+ hit.collider.gameObject.name+" Detect to Moving");
-		}
-
-
 		Debug.DrawLine(sensorStartPos, hit.point, Color.red);
 		//Debug.Log("Detected car: " + hit.collider.gameObject.tag);
 	}

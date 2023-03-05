@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Image gameOver;
     public TextMeshProUGUI lastScore;
+    public TextMeshProUGUI ScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        ScoreText.text = "Score: "+score;
     }
 
     

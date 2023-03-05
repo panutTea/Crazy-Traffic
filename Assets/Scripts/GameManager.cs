@@ -8,22 +8,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private int score;
-    private bool _isGameActive = false;
-    private bool _isGameOver = false;
+    public bool isGameActive { get; private set; }
+    public bool isGameOver { get; private set; }
+    public int level { get; private set; }
 
     public GameObject player;
-    public Image menu;
     public Image gameOver;
     public TextMeshProUGUI lastScore;
-
-    public bool isGameOver
-    {
-        get { return _isGameOver; }
-    }
-    public bool isGameActive
-    { 
-        get { return _isGameActive; } 
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +48,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        _isGameActive = true;
+        isGameActive = true;
+        level = 0;
         score = 0;
         UpdateScore(0);
     }
@@ -67,11 +59,11 @@ public class GameManager : MonoBehaviour
         
         Debug.Log("Game Over!  -- Score = "+ score);
         
-        _isGameActive = false;
-        _isGameOver = true;
+        isGameActive = false;
+        isGameOver = true;
         lastScore.text = "Score: " + score;
         gameOver.gameObject.SetActive(true);
-        Debug.Log("GameOver isGameActive = "+_isGameActive);
+        Debug.Log("GameOver isGameActive = "+ isGameActive);
 
 
     }
@@ -80,13 +72,12 @@ public class GameManager : MonoBehaviour
     {
         // Reset the game state to the beginning
         gameOver.gameObject.SetActive(false);
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("City Scene");
 
     }
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        //Debug.Log(score);
     }
 
     

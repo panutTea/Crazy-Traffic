@@ -3,65 +3,96 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum EmoStates 
+{
+	Happy,
+	Good,
+	Fine, 
+	Anger,
+	Furious
+};
 public class Emotions : MonoBehaviour
 {
-    public Slider emoBar;
-    public Text emoStateText;
+	public Slider emoBar;
+	
+	public GameObject emoji;
+	
+	public Sprite[] emojiIcons;
 
-    private float emoValues;
+	[SerializeField]
+	// A value to increase emotion value per second
+	private float emoIncreasingValue = 5;
+	// A value to decrease emotion value per second
+	[SerializeField]
+	private float emoDecreasingValue = -10;
+	[SerializeField]
+	private float EMO_MAXIUM = 100;
 
-    // A value to increase emotion value per second
-    public float emoIncreasingValue = 5;
-    public float EMO_MAXIUM = 100;
+	// State of emotion (5 states)
+	[SerializeField]
+	private float[] emoStateValueList = {0, 0.25f, 0.5f, 0.75f, 1};
 
-    // State of emotion (5 states)
-    public enum EmoStates {Happy, Good, Fine,  Anger, Furious};
-    public float[] emoStateValueList = {0, 0.25f, 0.5f, 0.75f, 1};
+	private EmoStates emoState = EmoStates.Happy;
 
-    public EmoStates emoState = EmoStates.Happy; 
+	private Car carScript;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Set maximum value of emotion bar
-        emoBar.maxValue = EMO_MAXIUM;
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+		// Set maximum value of emotion bar
+		emoBar.maxValue = EMO_MAXIUM;
+		
+		emoBar.onValueChanged.AddListener(OnEmoValuesChange);
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateEmotionValues();
-    }
+		carScript = GetComponentInParent<Car>();
+	}
 
-    void UpdateEmotionValues() {
-        emoValues += emoIncreasingValue * Time.deltaTime;
-        emoBar.value = emoValues;
+	// Update is called once per frame
+	void Update()
+	{
+		if (!carScript.isCrazy)
+        {
+			UpdateEmotion(carScript.moveState == MoveStates.Stop);
+		}
+			
+	}
 
-        // Change state
-        if (emoValues >= emoStateValueList[4] * EMO_MAXIUM) {
-            emoState = EmoStates.Furious;
-            emoStateText.text = "Furious";
-            //Debug.Log("Furious");
-        }
-        else if (emoValues >= emoStateValueList[3] * EMO_MAXIUM) {
-            emoState = EmoStates.Anger;
-            emoStateText.text = "Anger";
-            //Debug.Log("Anger");
-        }
-        else if (emoValues >= emoStateValueList[2] * EMO_MAXIUM) {
-            emoState = EmoStates.Fine;
-            emoStateText.text = "Fine";
-            //Debug.Log("Fine");
-        }
-        else if (emoValues >= emoStateValueList[1] * EMO_MAXIUM) {
-            emoState = EmoStates.Good;
-            emoStateText.text = "Good";
-            //Debug.Log("Good");
-        }
-        else if (emoValues >= emoStateValueList[0] * EMO_MAXIUM) {
-            emoState = EmoStates.Happy;
-            emoStateText.text = "Happy";
-           // Debug.Log("Happy");
-        }
-    }
+	void UpdateEmotion(bool isIncrease) {
+		// If car get crash, it will get furious immediatly
+		if (carScript.isCrash) 
+		{
+			emoBar.value = EMO_MAXIUM;
+			emoState = EmoStates.Furious;
+		}
+		
+		// If car get furious will not increase or decrease emotion value
+		else if (emoState == EmoStates.Furious && carScript.moveState == MoveStates.Stop) 
+		{
+			Debug.Log("Furious");
+			carScript.isCrazy = true;
+		}
+		else if (emoState != EmoStates.Furious)
+		{
+			if (isIncrease)
+			{
+				emoBar.value += emoIncreasingValue * Time.deltaTime;
+			}
+			else if (emoBar.value > 0)
+			{
+				emoBar.value += emoDecreasingValue * Time.deltaTime;
+			}
+		}
+	}
+	
+	void OnEmoValuesChange(float value) 
+	{
+		// Check if emotion change or not
+		for (int i = emoStateValueList.Length - 1; i >= 0; i--) {
+			if (value >= emoStateValueList[i] * EMO_MAXIUM) {
+				emoState = (EmoStates) i;
+				emoji.GetComponent<SpriteRenderer>().sprite = emojiIcons[i];
+				return;
+			}
+		}
+	}
 }

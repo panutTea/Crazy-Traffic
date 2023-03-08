@@ -53,11 +53,6 @@ public class Car : MonoBehaviour
 	
 	private Animator animator;
 
-	//Sound
-	public AudioClip crashSound;
-	private AudioSource carAudio;
-	public bool checkCrash = false;
-
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -69,8 +64,6 @@ public class Car : MonoBehaviour
 		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 		currentMaxSpeed = maxSpeed;
 		currentSpeed = currentMaxSpeed;
-
-		carAudio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -104,24 +97,19 @@ public class Car : MonoBehaviour
 		else if (moveState != MoveStates.Stop)
 		{
 			Stop();
-			if (checkCrash == true) 
-			{
-				carAudio.PlayOneShot(crashSound, 1.0f);
-				checkCrash = false;
-			}
-			
 		}
-		
-		
-		// Debug try to controll //
-		// if (Input.GetKeyDown(KeyCode.Space)) 
-		// {
-		// 	if (moveState == MoveStates.Moving) 
-		// 	{
-		// 		StopCar();
-		// 	} else { ReleaseCar(); }
-		// };
-	}
+
+
+        // Debug try to controll //
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if (moveState == MoveStates.Moving)
+        //    {
+        //        StopCar();
+        //    }
+        //    else { ReleaseCar(); }
+        //};
+    }
 
 	void FixedUpdate()
 	{
@@ -138,11 +126,13 @@ public class Car : MonoBehaviour
 
 	public void ReleaseCar() 
 	{
+		Debug.Log("Release!!");
 		isForcedStop = false;
 	}
 	
 	public void StopCar() 
 	{
+		Debug.Log("Stop!!");
 		isForcedStop = true;
 		currentMaxSpeed = 0;
 	}
@@ -269,13 +259,11 @@ public class Car : MonoBehaviour
 		}
 	}
 
-
-    public void Crash()
+	public void Crash()
 	{
 		isCrash = true;
 		currentMaxSpeed = 0;
 		Debug.Log(gameObject.name+" Crash");
-		checkCrash = true;
 	}
 
 

@@ -101,13 +101,13 @@ public class Car : MonoBehaviour
 		
 		
 		// Debug try to controll //
-		// if (Input.GetKeyDown(KeyCode.Space)) 
-		// {
-		// 	if (moveState == MoveStates.Moving) 
-		// 	{
-		// 		StopCar();
-		// 	} else { ReleaseCar(); }
-		// };
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{
+			if (moveState == MoveStates.Moving) 
+			{
+				StopCar();
+			} else { ReleaseCar(); }
+		};
 	}
 
 	void FixedUpdate()

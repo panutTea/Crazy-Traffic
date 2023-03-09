@@ -16,7 +16,7 @@ public class RayHit : MonoBehaviour
     public void OnHoverExited(HoverExitEventArgs args)
     {
         Debug.Log($"{args.interactorObject} hovered over {args.interactableObject}", this);
-        //isHovered = false;
+        isHovered = false;
     }
 
     public void ReceiveCommand(string command)

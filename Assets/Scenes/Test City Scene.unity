@@ -6712,7 +6712,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &215727307
 MeshCollider:
@@ -10528,7 +10528,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &311204123
 MeshCollider:
@@ -12269,7 +12269,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &361179050
 MeshCollider:
@@ -13207,7 +13207,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &383481292
 MeshCollider:
@@ -14391,7 +14391,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &401471517
 MeshCollider:
@@ -17842,7 +17842,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &508637564
 MeshCollider:
@@ -27522,7 +27522,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &746481690
 MeshCollider:
@@ -32850,7 +32850,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &912674816
 MeshCollider:
@@ -45961,12 +45961,22 @@ PrefabInstance:
     - target: {fileID: 5686134208553950726, guid: ddc38db09f9124241b4b4e9b2b9831eb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.21303518
+      value: 0.21604662
       objectReference: {fileID: 0}
     - target: {fileID: 5686134208553950726, guid: ddc38db09f9124241b4b4e9b2b9831eb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.24596232
+      value: 0.24943921
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686134208553950726, guid: ddc38db09f9124241b4b4e9b2b9831eb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9192006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686134208553950726, guid: ddc38db09f9124241b4b4e9b2b9831eb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.21488197
       objectReference: {fileID: 0}
     - target: {fileID: 5686134208553950730, guid: ddc38db09f9124241b4b4e9b2b9831eb,
         type: 3}
@@ -46001,12 +46011,22 @@ PrefabInstance:
     - target: {fileID: 5686134208553950752, guid: ddc38db09f9124241b4b4e9b2b9831eb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.080726855
+      value: 0.08077066
       objectReference: {fileID: 0}
     - target: {fileID: 5686134208553950752, guid: ddc38db09f9124241b4b4e9b2b9831eb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.033651832
+      value: -0.033670094
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686134208553950752, guid: ddc38db09f9124241b4b4e9b2b9831eb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5814181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686134208553950752, guid: ddc38db09f9124241b4b4e9b2b9831eb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.8088852
       objectReference: {fileID: 0}
     - target: {fileID: 5686134208553950756, guid: ddc38db09f9124241b4b4e9b2b9831eb,
         type: 3}
@@ -48644,7 +48664,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &1364529872
 MeshCollider:
@@ -59880,7 +59900,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &1645840836
 MeshCollider:
@@ -60409,7 +60429,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &1653792809
 MeshCollider:
@@ -64854,7 +64874,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
+  crashSound: {fileID: 0}
   checkCrash: 0
 --- !u!64 &1791416467
 MeshCollider:

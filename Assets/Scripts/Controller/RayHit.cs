@@ -21,7 +21,7 @@ public class RayHit : MonoBehaviour
 
     public void ReceiveCommand(string command)
     {
-        Debug.Log(command + " " + isHovered);
+        //Debug.Log(command + " " + isHovered);
         if(command == "stop" && isHovered)
         {
             nowArgs.interactableObject.transform.GetComponent<Car>().StopCar();

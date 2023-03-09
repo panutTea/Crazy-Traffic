@@ -7,6 +7,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 using PDollarGestureRecognizer;
 using System.IO;
 using UnityEngine.Events;
+public enum MovementStates
+{
+    Stop,
+    Call,
+    None
+}
+
 public class MovementRecognizer : MonoBehaviour
 {
     private bool isMoving = false;
@@ -19,10 +26,12 @@ public class MovementRecognizer : MonoBehaviour
     public bool creationMode = true;
     public string newGestureName;
     public float recognitionThreshold = 0.9f;
+    private MovementStates command = MovementStates.None;
 
     [System.Serializable]
     public class UnityStringEvent : UnityEvent<string> { }
     public UnityStringEvent OnRecognized;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,14 +43,25 @@ public class MovementRecognizer : MonoBehaviour
         }
     }
 
-    public void onPressed()
+    public void onCallPressed()
     {
+        Debug.Log("now call pressed");
         isPressed = true;
+        command = MovementStates.Call;
+
     }
     public void onReleased()
     {
         isPressed = false;
+        //command = MovementStates.None;
     }
+    public void onStopPressed()
+    {
+        Debug.Log("now stop pressed");
+        isPressed = true;
+        command = MovementStates.Stop;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -65,7 +85,7 @@ public class MovementRecognizer : MonoBehaviour
     }
     void StartMovement()
     {
-        Debug.Log("Start Movement");
+        //Debug.Log("Start Movement");
         isMoving = true;
         positionsList.Clear();
         positionsList.Add(movementSource.position);
@@ -77,7 +97,7 @@ public class MovementRecognizer : MonoBehaviour
     }
     void EndMovement()
     {
-        Debug.Log("End Movement");
+        //Debug.Log("End Movement");
         isMoving = false;
 
         //Create The Gesture From The Position List
@@ -104,16 +124,30 @@ public class MovementRecognizer : MonoBehaviour
         else
         {
             Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
-            Debug.Log(result.GestureClass + result.Score);
-            if(result.Score > recognitionThreshold)
+            Debug.Log(command == MovementStates.Stop && result.GestureClass == "stop");
+            if (command == MovementStates.Call && result.GestureClass == "call")
             {
-                OnRecognized.Invoke(result.GestureClass);
+                if (result.Score > recognitionThreshold)
+                {
+                    OnRecognized.Invoke(result.GestureClass);
+                    Debug.Log(result.GestureClass + result.Score);
+                }
             }
+            if (command == MovementStates.Stop && result.GestureClass == "stop")
+            {
+                if (result.Score > recognitionThreshold)
+                {
+                    OnRecognized.Invoke(result.GestureClass);
+                    Debug.Log(result.GestureClass + result.Score);
+                }
+            }
+                
+            
         }
     }
     void UpdateMovement()
     {
-        Debug.Log("Update Movement");
+        //Debug.Log("Update Movement");
         Vector3 lastPosition = positionsList[positionsList.Count - 1];
         if(Vector3.Distance(movementSource.position, lastPosition) > newPositionThresholdDistance)
         {

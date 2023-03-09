@@ -8,9 +8,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private int score;
+    private int nextLevel = 100;
     public bool isGameActive { get; private set; }
     public bool isGameOver { get; private set; }
     public int level { get; private set; }
+
 
     public GameObject player;
     public Image gameOver;
@@ -26,7 +28,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (score > nextLevel)
+        {
+            level++;
+            nextLevel += 100*level;
+            Debug.Log("Level: "+level+" next level: "+nextLevel);
+        }
         if (isGameActive && !isGameOver && Input.GetKeyDown(KeyCode.Return))
         {
             // The "Enter" key has been pressed
@@ -49,13 +56,16 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        isGameActive = true;
         isGameOver = false;
-        level = 0;
+        level = 1;
         score = 0;
         UpdateScore(0);
     }
 
+    public void SetGameAvtive()
+    {
+        isGameActive = true;
+    }
     public void GameOver()
     {
         
@@ -74,7 +84,7 @@ public class GameManager : MonoBehaviour
     {
         // Reset the game state to the beginning
         gameOver.gameObject.SetActive(false);
-        SceneManager.LoadScene("City Scene");
+        SceneManager.LoadScene("Test City Scene");
 
     }
     public void UpdateScore(int scoreToAdd)

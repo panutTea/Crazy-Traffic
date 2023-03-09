@@ -36,7 +36,8 @@ public class Car : MonoBehaviour
 
 	private GameObject dollyCart;
 	private GameManager gameManager;
-	
+	private GameObject spwanManager;
+
 
 	public float accelerationRate = 5f; // Rate at which the car accelerates
 	public float brakeRate = 10f; // Rate at which the car brakes
@@ -62,13 +63,10 @@ public class Car : MonoBehaviour
 	void Start()
 	{
 		isCrash = false;
-		
 		animator = GetComponentInChildren<Animator>();
 		
 		dollyCart = gameObject.transform.parent.gameObject;
 		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-		currentMaxSpeed = maxSpeed;
-		currentSpeed = currentMaxSpeed;
 
 		carAudio = GetComponent<AudioSource>();
 	}
@@ -135,10 +133,19 @@ public class Car : MonoBehaviour
 		}
 		
 	}
-
+	public void setDefaultSpeed()
+    {
+		currentMaxSpeed = maxSpeed;
+		currentSpeed = currentMaxSpeed;
+	}
 	public void ReleaseCar() 
 	{
 		isForcedStop = false;
+		currentMaxSpeed = maxSpeed;
+        if (!gameManager.isGameActive)
+        {
+			gameManager.SetGameAvtive();
+        }
 	}
 	
 	public void StopCar() 

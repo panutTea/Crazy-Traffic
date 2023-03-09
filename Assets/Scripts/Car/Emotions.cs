@@ -35,6 +35,7 @@ public class Emotions : MonoBehaviour
 	private EmoStates emoState = EmoStates.Happy;
 
 	private Car carScript;
+	private GameManager gameManager;
 
 	// Start is called before the first frame update
 	void Start()
@@ -45,12 +46,14 @@ public class Emotions : MonoBehaviour
 		emoBar.onValueChanged.AddListener(OnEmoValuesChange);
 
 		carScript = GetComponentInParent<Car>();
+
+		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (!carScript.isCrazy)
+		if ((gameManager.isGameActive || gameManager.isGameOver) && !carScript.isCrazy)
         {
 			UpdateEmotion(carScript.moveState == MoveStates.Stop);
 		}

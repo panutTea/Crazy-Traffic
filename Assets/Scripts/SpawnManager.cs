@@ -11,19 +11,28 @@ public class SpawnManager : MonoBehaviour
 
     private float startDelay = 1.5f;
     private float repeatRate = 1.5f;
-
+    private int spawnAmbulance = 0;
+    private int spawnLevel = 0;
     private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        spawnAmbulance = 0;
+        spawnLevel = 1;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         InvokeRepeating("SpawnRandomPath", startDelay, repeatRate);
+        Debug.Log(gameManager.level);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (spawnLevel +1  == gameManager.level)
+        {
+            spawnAmbulance += spawnLevel * 2;
+            spawnLevel++;
+        }
     }
 
     void SpawnRandomPath()
@@ -34,18 +43,24 @@ public class SpawnManager : MonoBehaviour
             int pathIndex = Random.Range(0, pathPrefabs.Length);
             Lane lane = (Lane)(pathIndex/2);
 
-            int carIndex = Random.Range(0, carPrefabs.Length);
+            int carIndex = Random.Range(0, NumCarsUsedRandomSpawn());
+            if (carIndex == 3)
+            {
+                Debug.Log("Spawn LV: "+spawnLevel+ " Ambulance: "+ spawnAmbulance + " to "+ (spawnAmbulance-1));
+                spawnAmbulance--;
+            }
             Vector3 spawnPathPos = new Vector3(0, 0, 0);
             GameObject currentCar = carPrefabs[carIndex];
             GameObject currentPath = Instantiate(pathPrefabs[pathIndex], spawnPathPos, pathPrefabs[pathIndex].transform.rotation);
             GameObject dollyCart = currentPath.transform.GetChild(1).gameObject;
             dollyCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = currentCar.GetComponent<Car>().maxSpeed;
+            
             currentCar.GetComponent<Car>().fromLane = lane;
             currentCar.GetComponent<Car>().targetLane = GetLaneTarget(pathIndex);
             //Debug.Log("Spawn "+currentCar.transform.name + " Form "+currentCar.GetComponent<Cars>().fromLane+" To "+currentCar.GetComponent<Cars>().targetLane);
             currentCar = Instantiate(currentCar, dollyCart.transform.position, dollyCart.transform.rotation);
 
-
+            currentCar.GetComponent<Car>().setDefaultSpeed();
             currentCar.transform.SetParent(dollyCart.transform);
         }
         
@@ -59,6 +74,20 @@ public class SpawnManager : MonoBehaviour
             return Lane.Right;
         else
             return Lane.Top;
+    }
+
+    private int NumCarsUsedRandomSpawn()
+    {
+        
+        if (spawnLevel > 1)
+        {
+            if (spawnAmbulance > 0)
+            {
+                return 4;
+            }
+            return 3;
+        }
+        return 2;
     }
 
 }

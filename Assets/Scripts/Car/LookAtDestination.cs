@@ -10,6 +10,7 @@ public class LookAtDestination : MonoBehaviour
 
 	private void Start() {
 		carScript = GetComponentInParent<Car>();
+		allObjLane = GameObject.FindGameObjectsWithTag("Lane");
 		
 		foreach (GameObject lane in allObjLane) 
 		{

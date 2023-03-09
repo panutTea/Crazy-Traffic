@@ -125,4 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958e739a4c373684db422d7bdb5c1a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allObjLane: []
+  allObjLane:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

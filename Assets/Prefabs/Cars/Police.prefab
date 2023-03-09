@@ -385,11 +385,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCrazy: 0
   accelerationRate: 5
-  brakeRate: 40
+  brakeRate: 10
   score: 10
   maxSpeed: 15
   fromLane: 0
-  targetLane: 1
+  targetLane: 2
   laneStatus: 0
   layerMask:
     serializedVersion: 2
@@ -760,10 +760,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6223859797426957476, guid: b342aa4e064317445b87af5f804ea4cf,
+        type: 3}
+      propertyPath: allObjLane.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6705769807569086824, guid: b342aa4e064317445b87af5f804ea4cf,
         type: 3}
       propertyPath: m_Name
       value: arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076800033931962551, guid: b342aa4e064317445b87af5f804ea4cf,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 84.817
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076800033931962551, guid: b342aa4e064317445b87af5f804ea4cf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076800033931962551, guid: b342aa4e064317445b87af5f804ea4cf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076800033931962551, guid: b342aa4e064317445b87af5f804ea4cf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b342aa4e064317445b87af5f804ea4cf, type: 3}

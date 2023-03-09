@@ -150,8 +150,8 @@ MonoBehaviour:
   brakeRate: 30
   score: 20
   maxSpeed: 12
-  fromLane: 1
-  targetLane: 0
+  fromLane: 0
+  targetLane: 2
   laneStatus: 0
   layerMask:
     serializedVersion: 2
@@ -210,13 +210,13 @@ AudioSource:
   m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 10
-  MaxDistance: 25
+  MinDistance: 15
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -776,6 +776,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2157286362448975567}
     m_Modifications:
+    - target: {fileID: 2330849263216420043, guid: 9f17ef3cb7358c549a670a1b1e04da92,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7151328419177539322, guid: 9f17ef3cb7358c549a670a1b1e04da92,
         type: 3}
       propertyPath: m_Name

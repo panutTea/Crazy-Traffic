@@ -58,6 +58,9 @@ public class Car : MonoBehaviour
 	private AudioSource carAudio;
 	public bool checkCrash = false;
 
+	//Effect
+	public ParticleSystem explosionParticle;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -76,6 +79,7 @@ public class Car : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        
 		if (currentSpeed == 0 && moveState == MoveStates.Moving) 
 		{
 			moveState = MoveStates.Stop;
@@ -114,13 +118,13 @@ public class Car : MonoBehaviour
 		
 		
 		// Debug try to controll //
-		// if (Input.GetKeyDown(KeyCode.Space)) 
-		// {
-		// 	if (moveState == MoveStates.Moving) 
-		// 	{
-		// 		StopCar();
-		// 	} else { ReleaseCar(); }
-		// };
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{
+			if (moveState == MoveStates.Moving) 
+			{
+				StopCar();
+			} else { ReleaseCar(); }
+		};
 	}
 
 	void FixedUpdate()
@@ -266,6 +270,7 @@ public class Car : MonoBehaviour
 			gameManager.GameOver();
 			Crash();
 			collision.gameObject.transform.GetComponent<Car>().Crash();
+			explosionParticle.Play();
 		}
 	}
 

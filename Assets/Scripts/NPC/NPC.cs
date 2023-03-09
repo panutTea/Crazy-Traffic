@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class NPC : MonoBehaviour
 {
+	private GameManager gameManager;
+
 	private Camera cam;
 	
 	private NavMeshAgent agent;
@@ -12,6 +14,8 @@ public class NPC : MonoBehaviour
 	private Animator animator;
 	
 	public GameObject destination;
+	
+	[SerializeField] private bool isSeller = false;
 	
 	[SerializeField] private float speed = 0;
 	
@@ -29,15 +33,24 @@ public class NPC : MonoBehaviour
 	
 	private void Start()
 	{
+		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 		cam = GameObject.Find("Main Camera").GetComponent<Camera>();
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator>();
 		
-		agent.speed = speed;
-		agent.SetDestination(destination.transform.position);
+		if (isSeller) 
+		{
+			animator.SetBool("isSeller", isSeller);
+		}
+		else 
+		{
+			agent.speed = speed;
+			agent.SetDestination(destination.transform.position);
+			
+			// Start to random to change a move
+			StartCoroutine(TimeToChangeIdle());
+		}
 		
-		// Start to random to change a move
-		StartCoroutine(TimeToChangeIdle());
 	}
 
 	// Update is called once per frame
@@ -51,7 +64,7 @@ public class NPC : MonoBehaviour
 		bool isLeftHit2 = IsSensorHit(1.5f * -sensorRange);
 		
 		// If any other npc stay at the forward right, move left
-		if (!isIdle) 
+		if (!isIdle && !isSeller) 
 		{
 			if (isRightHit1 || isRightHit2) 
 			{
@@ -71,7 +84,16 @@ public class NPC : MonoBehaviour
 	
 	void SetSpeed() 
 	{
-		// Debug.Log(agent.velocity.magnitude);
+		if (gameManager.isGameOver) 
+		{
+			isSeller = false;
+			animator.SetBool("isSeller", isSeller);
+			agent.speed = speed * 2;
+			if (agent.destination != destination.transform.position)
+			{
+				agent.SetDestination(destination.transform.position);
+			}
+		}
 		animator.SetFloat("Speed_f", agent.velocity.magnitude);
 	}
 	
@@ -85,12 +107,12 @@ public class NPC : MonoBehaviour
 		
 		if (Physics.Raycast(sensorStartPos, sensorDirection, out hit, sensorLength, layerMask) && hit.collider.gameObject.tag == "NPC")
 		{
-			Debug.DrawLine(sensorStartPos, sensorStartPos + sensorDirection * sensorLength, Color.red);
+			// Debug.DrawLine(sensorStartPos, sensorStartPos + sensorDirection * sensorLength, Color.red);
 			return true;
 		}
 		else 
 		{
-			Debug.DrawLine(sensorStartPos, sensorStartPos + sensorDirection * sensorLength, Color.green);
+			// Debug.DrawLine(sensorStartPos, sensorStartPos + sensorDirection * sensorLength, Color.green);
 			return false;
 		}
 	}
@@ -99,14 +121,17 @@ public class NPC : MonoBehaviour
 	{
 		yield return new WaitForSeconds(changeMoveTime);
 		
-		if (isIdle) 
+		if (!gameManager.isGameOver) 
 		{
-			RandomToMove();
-			RandomToChangeIdle();
-		}
-		else 
-		{
-			RandomToIdle();
+			if (isIdle) 
+			{
+				RandomToMove();
+				RandomToChangeIdle();
+			}
+			else 
+			{
+				RandomToIdle();
+			}
 		}
 		
 		StartCoroutine(TimeToChangeIdle());

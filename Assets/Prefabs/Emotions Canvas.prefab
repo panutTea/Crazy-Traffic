@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8241949667645639299}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5819961709044645989}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2758926543550929403}
   - component: {fileID: 9077218059617285828}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Emotion Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 9169937714114736865}
   - component: {fileID: 6812081115106577158}
   - component: {fileID: 601475622221262251}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,8 @@ GameObject:
   - component: {fileID: 2912441073425448476}
   - component: {fileID: 654173702358180007}
   - component: {fileID: 5644768925366931552}
-  m_Layer: 5
+  - component: {fileID: 5332455724417111605}
+  m_Layer: 3
   m_Name: Emotions Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +455,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ffac15f3ae566594895ca3db18da152b, type: 3}
   - {fileID: 21300000, guid: c8440181ce4a5934c9f6d7c2de91ba60, type: 3}
   - {fileID: 21300000, guid: 19418d2522868c443829a7686a1a4e58, type: 3}
-  emoIncreasingValue: 5
+  emoIncreasingValue: 6
   emoDecreasingValue: -10
   EMO_MAXIUM: 100
   emoStateValueList:
@@ -463,6 +464,103 @@ MonoBehaviour:
   - 0.5
   - 0.75
   - 1
+  carHornAngrySound: {fileID: 8300000, guid: 666f9f0a1ed45c448aab42b7c258e29d, type: 3}
+--- !u!82 &5332455724417111605
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151328419177539322}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &9131916064540853312
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +572,7 @@ GameObject:
   - component: {fileID: 2330849263216420043}
   - component: {fileID: 5863716071957432644}
   - component: {fileID: 1975406470722314557}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

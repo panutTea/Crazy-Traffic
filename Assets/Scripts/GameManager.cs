@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Image gameOver;
     public TextMeshProUGUI lastScore;
+    public TextMeshProUGUI ScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (isGameActive && !isGameOver &&Input.GetKeyDown(KeyCode.Return))
+        if (isGameActive && !isGameOver && Input.GetKeyDown(KeyCode.Return))
         {
             // The "Enter" key has been pressed
             // Do something here, like print a message
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
 
-        if (isGameOver)
+        else if (isGameOver)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
+        isGameOver = false;
         level = 0;
         score = 0;
         UpdateScore(0);
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        ScoreText.text = "Score: "+score;
     }
 
     

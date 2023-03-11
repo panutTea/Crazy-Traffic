@@ -200,7 +200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7758067150001347062
 Transform:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialPrefabs:
-  - {fileID: 3735100133652467594, guid: 6479a91bc74367e44a1ac82bae07fcaa, type: 3}
+  - {fileID: 1943159471117482786, guid: 533e153861043b349baf9c2f479d914e, type: 3}
   spawnPointObject: {fileID: 6414711197790496671}
   spawnProp: 0.1
   spawnTime: 0.5
@@ -555,7 +555,7 @@ PrefabInstance:
     - target: {fileID: 2330849263216420043, guid: 9f17ef3cb7358c549a670a1b1e04da92,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4348729287742518824, guid: 9f17ef3cb7358c549a670a1b1e04da92,
         type: 3}

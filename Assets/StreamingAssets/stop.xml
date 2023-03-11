@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "stop">
+	<Stroke>
+		<Point X = "948.0676" Y = "215.5614" T = "0" Pressure = "0" />
+		<Point X = "904.848" Y = "283.5022" T = "0" Pressure = "0" />
+		<Point X = "878.4343" Y = "328.1489" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>

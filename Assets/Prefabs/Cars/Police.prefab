@@ -318,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8480102116457950492
 Transform:
   m_ObjectHideFlags: 0
@@ -389,8 +389,8 @@ MonoBehaviour:
   brakeRate: 10
   score: 10
   maxSpeed: 15
-  fromLane: 0
-  targetLane: 2
+  fromLane: 2
+  targetLane: 0
   laneStatus: 0
   layerMask:
     serializedVersion: 2

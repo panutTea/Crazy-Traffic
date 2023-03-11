@@ -150,15 +150,13 @@ MonoBehaviour:
   brakeRate: 30
   score: 20
   maxSpeed: 12
-  fromLane: 0
-  targetLane: 2
+  fromLane: 1
+  targetLane: 0
   laneStatus: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 8
   moveState: 0
-  crashSound: {fileID: 8300000, guid: 738cb7a7e4cf8e341adf521ac2bb8d9b, type: 3}
-  checkCrash: 0
 --- !u!114 &888562320
 MonoBehaviour:
   m_ObjectHideFlags: 0

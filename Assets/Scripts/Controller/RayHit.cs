@@ -9,6 +9,7 @@ public class RayHit : MonoBehaviour
 
     public void OnHoverEntered(HoverEnterEventArgs args)
     {
+        //if(args.interactable)
         Debug.Log($"{args.interactorObject} hovered over {args.interactableObject}", this);
         isHovered = true;
         nowArgs = args;

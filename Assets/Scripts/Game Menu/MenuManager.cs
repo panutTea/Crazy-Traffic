@@ -34,4 +34,15 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("City Scene");
     }
 
+    public void Guid()
+    {
+        
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Exit");
+        Application.Quit();
+    }
+
 }

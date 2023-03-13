@@ -220,9 +220,9 @@ Transform:
   - {fileID: 8625384955176070311}
   - {fileID: 4781883251049613229}
   - {fileID: 4017760989756659607}
-  - {fileID: 3469071056333663596}
   - {fileID: 3172222372298439277}
   - {fileID: 8750019668105741089}
+  - {fileID: 3469071056333663596}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -273,8 +273,8 @@ MonoBehaviour:
   brakeRate: 20
   score: 5
   maxSpeed: 8
-  fromLane: 1
-  targetLane: 2
+  fromLane: 2
+  targetLane: 1
   laneStatus: 0
   layerMask:
     serializedVersion: 2
@@ -298,7 +298,7 @@ MonoBehaviour:
   specialPrefabs:
   - {fileID: 1943159471117482786, guid: 533e153861043b349baf9c2f479d914e, type: 3}
   spawnPointObject: {fileID: 3813211952857084992}
-  spawnProp: 0.1
+  spawnProp: 0.02
   spawnTime: 0.5
 --- !u!114 &1910332285807696184
 MonoBehaviour:
@@ -1026,9 +1026,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0ab94093e61cfc4abc0d3579186438a, type: 3}
---- !u!1 &3634827811516522969 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0ab94093e61cfc4abc0d3579186438a,
+--- !u!23 &2986305272991481868 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: f0ab94093e61cfc4abc0d3579186438a,
     type: 3}
   m_PrefabInstance: {fileID: 4517367106536873096}
   m_PrefabAsset: {fileID: 0}
@@ -1038,9 +1038,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4517367106536873096}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &2986305272991481868 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: f0ab94093e61cfc4abc0d3579186438a,
+--- !u!1 &3634827811516522969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0ab94093e61cfc4abc0d3579186438a,
     type: 3}
   m_PrefabInstance: {fileID: 4517367106536873096}
   m_PrefabAsset: {fileID: 0}
@@ -1318,7 +1318,7 @@ PrefabInstance:
     - target: {fileID: 5258331117553129771, guid: eb9104ef66b7305468adb3697fdeed5e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5258331117553129771, guid: eb9104ef66b7305468adb3697fdeed5e,
         type: 3}

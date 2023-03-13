@@ -9,10 +9,17 @@ public class PlayerSpecialUsing : MonoBehaviour
 	[SerializeField] private int hallsCoolNum = 0;
 	[SerializeField] private TextMeshProUGUI hallsCoolNumText;
 	[SerializeField] private GameObject hallsCoolShowcase;
+	[SerializeField] private AudioClip hallsCoolSound;
+	private AudioSource playerAudio;
 	
 	[System.Serializable]
 	public class UnityStringEvent : UnityEvent<string> { }
 	public UnityStringEvent OnRecognized;
+	
+	private void Start()
+	{
+		playerAudio = GetComponent<AudioSource>();
+	}
 	
 	public void AddHallsCool()
 	{
@@ -34,6 +41,7 @@ public class PlayerSpecialUsing : MonoBehaviour
 	
 	public void UseHallsCool()
 	{
+		playerAudio.PlayOneShot(hallsCoolSound, 1.0f);
 		OnRecognized.Invoke("useHallsCool");
 		hallsCoolNum--;
 	}

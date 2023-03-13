@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "callLong">
+	<Stroke>
+		<Point X = "556.8093" Y = "254.6702" T = "0" Pressure = "0" />
+		<Point X = "563.8494" Y = "259.1265" T = "0" Pressure = "0" />
+		<Point X = "574.7285" Y = "261.4771" T = "0" Pressure = "0" />
+		<Point X = "591.7722" Y = "255.6727" T = "0" Pressure = "0" />
+		<Point X = "615.1026" Y = "244.4368" T = "0" Pressure = "0" />
+		<Point X = "647.9802" Y = "224.3174" T = "0" Pressure = "0" />
+		<Point X = "699.1544" Y = "188.8622" T = "0" Pressure = "0" />
+		<Point X = "763.8204" Y = "122.0254" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>

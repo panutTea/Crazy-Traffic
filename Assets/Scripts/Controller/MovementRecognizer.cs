@@ -124,12 +124,12 @@ public class MovementRecognizer : MonoBehaviour
         else
         {
             Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
-            Debug.Log(command == MovementStates.Stop && result.GestureClass == "stop");
-            if (command == MovementStates.Call && result.GestureClass == "call")
+            Debug.Log(command == MovementStates.Call && (result.GestureClass == "callShort" || result.GestureClass == "callLong"));
+            if (command == MovementStates.Call && (result.GestureClass == "callShort" || result.GestureClass == "callLong"))
             {
                 if (result.Score > recognitionThreshold)
                 {
-                    OnRecognized.Invoke(result.GestureClass);
+                    OnRecognized.Invoke("call");
                     Debug.Log(result.GestureClass + result.Score);
                 }
             }
@@ -137,7 +137,7 @@ public class MovementRecognizer : MonoBehaviour
             {
                 if (result.Score > recognitionThreshold)
                 {
-                    OnRecognized.Invoke(result.GestureClass);
+                    OnRecognized.Invoke("stop");
                     Debug.Log(result.GestureClass + result.Score);
                 }
             }

@@ -134,16 +134,21 @@ public class Car : MonoBehaviour
 
 	public void ReleaseCar() 
 	{
-		Debug.Log("Release!!");
-		isForcedStop = false;
+		
+			Debug.Log("Release!!");
+			isForcedStop = false;
+		
 	}
 	
 	public void StopCar() 
 	{
-		Debug.Log("Stop!!");
-		isForcedStop = true;
-		currentMaxSpeed = 0;
+        if (laneStatus == LaneStatus.OnFromLane) {
+			Debug.Log("Stop!!");
+			isForcedStop = true;
+			currentMaxSpeed = 0;
+		}
 	}
+		
 	
 	// Set car to move for moveState and animation
 	private void Moving() 

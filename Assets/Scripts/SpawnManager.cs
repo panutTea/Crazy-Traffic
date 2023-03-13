@@ -28,6 +28,8 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Game level :"+gameManager.level);
+        Debug.Log("Spawn Level :"+spawnLevel);
         if (spawnLevel +1  == gameManager.level)
         {
             spawnAmbulance += spawnLevel * 2;

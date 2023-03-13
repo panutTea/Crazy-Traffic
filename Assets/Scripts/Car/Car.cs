@@ -59,6 +59,9 @@ public class Car : MonoBehaviour
 	private AudioSource carAudio;
 	public bool checkCrash = false;
 
+	//Effect
+	public ParticleSystem explosionParticle;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -74,6 +77,7 @@ public class Car : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        
 		if (currentSpeed == 0 && moveState == MoveStates.Moving) 
 		{
 			moveState = MoveStates.Stop;
@@ -102,23 +106,17 @@ public class Car : MonoBehaviour
 		else if (moveState != MoveStates.Stop)
 		{
 			Stop();
-			if (checkCrash == true) 
-			{
-				carAudio.PlayOneShot(crashSound, 1.0f);
-				checkCrash = false;
-			}
-			
 		}
 		
 		
 		// Debug try to controll //
-		// if (Input.GetKeyDown(KeyCode.Space)) 
-		// {
-		// 	if (moveState == MoveStates.Moving) 
-		// 	{
-		// 		StopCar();
-		// 	} else { ReleaseCar(); }
-		// };
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{
+			if (moveState == MoveStates.Moving) 
+			{
+				StopCar();
+			} else { ReleaseCar(); }
+		};
 	}
 
 	void FixedUpdate()
@@ -140,8 +138,13 @@ public class Car : MonoBehaviour
 	}
 	public void ReleaseCar() 
 	{
-		isForcedStop = false;
-		currentMaxSpeed = maxSpeed;
+		Debug.Log("Release");
+		if (!isCrash)
+        {
+			isForcedStop = false;
+			currentMaxSpeed = maxSpeed;
+		}
+		
         if (!gameManager.isGameActive)
         {
 			gameManager.SetGameAvtive();
@@ -150,9 +153,13 @@ public class Car : MonoBehaviour
 	
 	public void StopCar() 
 	{
-		isForcedStop = true;
-		currentMaxSpeed = 0;
+        if (laneStatus == LaneStatus.OnFromLane && !isCrazy) {
+			Debug.Log("Stop!!");
+			isForcedStop = true;
+			currentMaxSpeed = 0;
+		}
 	}
+		
 	
 	// Set car to move for moveState and animation
 	private void Moving() 
@@ -255,7 +262,7 @@ public class Car : MonoBehaviour
 
 	private void AdjustTheSpeed(RaycastHit hit, Vector3 sensorStartPos)
 	{
-		float o_speed = hit.collider.gameObject.transform.GetComponent<Car>().currentMaxSpeed;
+		float o_speed = hit.collider.gameObject.transform.GetComponent<Car>().currentSpeed;
 		
 		if ( o_speed < currentMaxSpeed )
 		{
@@ -273,16 +280,15 @@ public class Car : MonoBehaviour
 			gameManager.GameOver();
 			Crash();
 			collision.gameObject.transform.GetComponent<Car>().Crash();
+			explosionParticle.Play();
 		}
 	}
 
-
-    public void Crash()
+	public void Crash()
 	{
 		isCrash = true;
 		currentMaxSpeed = 0;
 		Debug.Log(gameObject.name+" Crash");
-		checkCrash = true;
 	}
 
 

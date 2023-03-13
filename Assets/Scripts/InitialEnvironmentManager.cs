@@ -14,30 +14,7 @@ public class InitialEnvironmentManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            cars[0].transform.GetComponent<Car>().ReleaseCar();
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            cars[1].transform.GetComponent<Car>().ReleaseCar();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            cars[2].transform.GetComponent<Car>().ReleaseCar();
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            cars[0].transform.GetComponent<Car>().StopCar();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            cars[1].transform.GetComponent<Car>().StopCar();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            cars[2].transform.GetComponent<Car>().StopCar();
-        }
+      
     }
 
     private void setStopCars()

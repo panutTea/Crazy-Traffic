@@ -6,6 +6,14 @@ public class SpecialItem : MonoBehaviour
 {
 	public Color outlineColor = Color.black;
 	
+	private Rigidbody _rigidbody;
+	
+	private GameObject mainCam;
+	[SerializeField] private float moveSpeed = 5;
+	private bool isStartToMove = false;
+	
+	[SerializeField] private float onTheGroundTime = 2;
+	
 	[Header("Bouncing")]
 	public float amplitude = 0.5f;
 	public float frequency = 1f;
@@ -16,22 +24,54 @@ public class SpecialItem : MonoBehaviour
 	Vector3 posOffset = new Vector3 ();
 	Vector3 tempPos = new Vector3 ();
 	
-	private bool isStart = false;
+	[Header("Rotate")]
+	[SerializeField] private float rotateSpeed = 5;
+	
+	private bool isStartToBounce = false;
 	private float time;
+	
+	[SerializeField] private float rangeToDestroy = 2;
+	
+	private void Start()
+	{
+		_rigidbody = GetComponent<Rigidbody>();
+		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
+		StartCoroutine(GotoPlayer());
+	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (transform.position.y > bottomBound && !isStart) 
+		Rotating();
+		
+		if (isStartToMove)
+		{
+			Vector3 towardCamera = mainCam.transform.position + Vector3.down - transform.position;
+			_rigidbody.AddForce(towardCamera * Time.deltaTime * moveSpeed, ForceMode.Impulse);
+			
+			if (towardCamera.magnitude < rangeToDestroy)
+			{
+				Destroy(gameObject);
+			}
+		}
+		else
+		{
+			Bouncing();
+		}
+	}
+	
+	private void Bouncing() 
+	{
+		if (transform.position.y > bottomBound && !isStartToBounce) 
 		{
 			transform.Translate(Vector3.down * getDownSpeed * Time.deltaTime);
 			posOffset = transform.position;
 		} 
 		else 
 		{	
-			if (!isStart) 
+			if (!isStartToBounce) 
 			{
-				isStart = true;
+				isStartToBounce = true;
 			}
 
 			tempPos = posOffset;
@@ -39,5 +79,16 @@ public class SpecialItem : MonoBehaviour
 			time += Time.deltaTime;
 			transform.position = tempPos;
 		}
+	}
+	
+	private void Rotating() 
+	{
+		transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed);
+	}
+	
+	IEnumerator GotoPlayer() 
+	{
+		yield return new WaitForSeconds(onTheGroundTime);
+		isStartToMove = true;
 	}
 }

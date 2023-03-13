@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        //isGameActive = true;
         isGameOver = false;
         level = 1;
         score = 0;
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         // Reset the game state to the beginning
         gameOver.gameObject.SetActive(false);
-        SceneManager.LoadScene("Test City Scene");
+        SceneManager.LoadScene("City Scene");
 
     }
     public void UpdateScore(int scoreToAdd)

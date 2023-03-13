@@ -107,4 +107,9 @@ public class Emotions : MonoBehaviour
 			}
 		}
 	}
+	
+	public void ClearCarEmotion()
+	{
+		emoBar.value = 0;
+	}
 }

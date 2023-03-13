@@ -77,7 +77,7 @@ public class Car : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-        
+		
 		if (currentSpeed == 0 && moveState == MoveStates.Moving) 
 		{
 			moveState = MoveStates.Stop;
@@ -289,6 +289,20 @@ public class Car : MonoBehaviour
 		isCrash = true;
 		currentMaxSpeed = 0;
 		Debug.Log(gameObject.name+" Crash");
+	}
+	
+	public void ClearAllCarEmotionInLane()
+	{
+		GameObject[] allCarInLane = GameObject.FindGameObjectsWithTag("Car");
+		foreach (GameObject car in allCarInLane)
+		{
+			Car carScript = car.GetComponent<Car>();
+			if (carScript.fromLane == this.fromLane && carScript.laneStatus == LaneStatus.OnFromLane)
+			{
+				car.GetComponentInChildren<Emotions>().ClearCarEmotion();
+				Debug.Log("Cleared");
+			}
+		}
 	}
 
 

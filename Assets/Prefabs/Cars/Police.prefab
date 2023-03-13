@@ -391,8 +391,8 @@ MonoBehaviour:
   brakeRate: 40
   score: 10
   maxSpeed: 15
-  fromLane: 0
-  targetLane: 2
+  fromLane: 1
+  targetLane: 0
   laneStatus: 0
   layerMask:
     serializedVersion: 2
@@ -416,7 +416,7 @@ MonoBehaviour:
   specialPrefabs:
   - {fileID: 1943159471117482786, guid: 533e153861043b349baf9c2f479d914e, type: 3}
   spawnPointObject: {fileID: 6197956765134688235}
-  spawnProp: 0.1
+  spawnProp: 0.02
   spawnTime: 0.5
 --- !u!114 &5131250676461107712
 MonoBehaviour:

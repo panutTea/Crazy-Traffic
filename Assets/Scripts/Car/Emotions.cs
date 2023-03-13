@@ -57,7 +57,7 @@ public class Emotions : MonoBehaviour
 	void Update()
 	{
 		if (!carScript.isCrazy)
-        {
+		{
 			UpdateEmotion(carScript.moveState == MoveStates.Stop);
 		}
 			
@@ -103,5 +103,10 @@ public class Emotions : MonoBehaviour
 				return;
 			}
 		}
+	}
+	
+	public void ClearCarEmotion()
+	{
+		emoBar.value = 0;
 	}
 }

@@ -6,9 +6,12 @@ public class SpecialItem : MonoBehaviour
 {
 	public Color outlineColor = Color.black;
 	
+	private GameObject player;
+	
 	private Rigidbody _rigidbody;
 	
 	private GameObject mainCam;
+	[SerializeField] private bool isShowOnly = false;
 	[SerializeField] private float moveSpeed = 5;
 	private bool isStartToMove = false;
 	
@@ -34,9 +37,13 @@ public class SpecialItem : MonoBehaviour
 	
 	private void Start()
 	{
+		player = GameObject.FindGameObjectWithTag("Player");
 		_rigidbody = GetComponent<Rigidbody>();
 		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
-		StartCoroutine(GotoPlayer());
+		if (!isShowOnly)
+		{
+			StartCoroutine(GotoPlayer());
+		}
 	}
 
 	// Update is called once per frame
@@ -48,13 +55,15 @@ public class SpecialItem : MonoBehaviour
 		{
 			Vector3 towardCamera = mainCam.transform.position + Vector3.down - transform.position;
 			_rigidbody.AddForce(towardCamera * Time.deltaTime * moveSpeed, ForceMode.Impulse);
+			Debug.Log(towardCamera.magnitude + " " + rangeToDestroy);
 			
 			if (towardCamera.magnitude < rangeToDestroy)
 			{
+				player.GetComponent<PlayerSpecialUsing>().AddHallsCool();
 				Destroy(gameObject);
 			}
 		}
-		else
+		else if (!isShowOnly)
 		{
 			Bouncing();
 		}

@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 0.4984753, g: 0.90642756, b: 0.9716981, a: 1}
+  isShowOnly: 0
   moveSpeed: 5
   onTheGroundTime: 5
   amplitude: 0.5

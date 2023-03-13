@@ -10,7 +10,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] pathPrefabs;
 
     private float startDelay = 1.5f;
-    private float repeatRate = 1.5f;
+    private float repeatRate = 3.0f;
+    private float minimumRepeatRate = 1.5f;
     private int spawnAmbulance = 0;
     private int spawnLevel = 0;
     private GameManager gameManager;
@@ -30,11 +31,17 @@ public class SpawnManager : MonoBehaviour
     {
         Debug.Log("Game level :"+gameManager.level);
         Debug.Log("Spawn Level :"+spawnLevel);
+        Debug.Log("repeatRate :"+repeatRate);
         if (spawnLevel +1  == gameManager.level)
         {
             spawnAmbulance += spawnLevel * 2;
             spawnLevel++;
+            if (repeatRate > minimumRepeatRate)
+            {
+                repeatRate -= 0.5f;
+            }
         }
+
     }
 
     void SpawnRandomPath()

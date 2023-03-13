@@ -235,7 +235,7 @@ public class Car : MonoBehaviour
 			}
 			else if (laneStatus == LaneStatus.OnCenter)
 			{
-				if (fromLane == hit.collider.gameObject.GetComponent<Car>().fromLane || targetLane == hit.collider.gameObject.GetComponent<Car>().targetLane)
+				if (fromLane == hit.collider.gameObject.GetComponent<Car>().fromLane || (isCenterRay && targetLane == hit.collider.gameObject.GetComponent<Car>().targetLane))
 				{
 					AdjustTheSpeed(hit, sensorStartPos);
 				}

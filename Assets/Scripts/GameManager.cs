@@ -88,6 +88,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("City Scene");
 
     }
+    public void BackToMenu()
+    {
+        // Reset the game state to the beginning
+        gameOver.gameObject.SetActive(false);
+        SceneManager.LoadScene("Game Menu");
+
+    }
+
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;

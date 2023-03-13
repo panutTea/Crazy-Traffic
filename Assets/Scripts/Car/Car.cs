@@ -36,7 +36,8 @@ public class Car : MonoBehaviour
 
 	private GameObject dollyCart;
 	private GameManager gameManager;
-	
+	private GameObject spwanManager;
+
 
 	public float accelerationRate = 5f; // Rate at which the car accelerates
 	public float brakeRate = 10f; // Rate at which the car brakes
@@ -65,13 +66,12 @@ public class Car : MonoBehaviour
 	void Start()
 	{
 		isCrash = false;
-		
 		animator = GetComponentInChildren<Animator>();
 		
 		dollyCart = gameObject.transform.parent.gameObject;
 		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-		currentMaxSpeed = maxSpeed;
-		currentSpeed = currentMaxSpeed;
+
+		carAudio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -131,18 +131,29 @@ public class Car : MonoBehaviour
 		}
 		
 	}
-
+	public void setDefaultSpeed()
+    {
+		currentMaxSpeed = maxSpeed;
+		currentSpeed = currentMaxSpeed;
+	}
 	public void ReleaseCar() 
 	{
-		
-			Debug.Log("Release!!");
+		Debug.Log("Release");
+		if (!isCrash)
+        {
 			isForcedStop = false;
+			currentMaxSpeed = maxSpeed;
+		}
 		
+        if (!gameManager.isGameActive)
+        {
+			gameManager.SetGameAvtive();
+        }
 	}
 	
 	public void StopCar() 
 	{
-		if (laneStatus == LaneStatus.OnFromLane) {
+        if (laneStatus == LaneStatus.OnFromLane && !isCrazy) {
 			Debug.Log("Stop!!");
 			isForcedStop = true;
 			currentMaxSpeed = 0;
@@ -224,7 +235,7 @@ public class Car : MonoBehaviour
 			}
 			else if (laneStatus == LaneStatus.OnCenter)
 			{
-				if (fromLane == hit.collider.gameObject.GetComponent<Car>().fromLane || targetLane == hit.collider.gameObject.GetComponent<Car>().targetLane)
+				if (fromLane == hit.collider.gameObject.GetComponent<Car>().fromLane || (isCenterRay && targetLane == hit.collider.gameObject.GetComponent<Car>().targetLane))
 				{
 					AdjustTheSpeed(hit, sensorStartPos);
 				}
@@ -251,7 +262,7 @@ public class Car : MonoBehaviour
 
 	private void AdjustTheSpeed(RaycastHit hit, Vector3 sensorStartPos)
 	{
-		float o_speed = hit.collider.gameObject.transform.GetComponent<Car>().currentMaxSpeed;
+		float o_speed = hit.collider.gameObject.transform.GetComponent<Car>().currentSpeed;
 		
 		if ( o_speed < currentMaxSpeed )
 		{

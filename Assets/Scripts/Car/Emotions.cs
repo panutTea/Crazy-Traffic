@@ -35,10 +35,12 @@ public class Emotions : MonoBehaviour
 	private EmoStates emoState = EmoStates.Happy;
 
 	private Car carScript;
+	private GameManager gameManager;
 
 	//Sound
 	public AudioClip carHornAngrySound;
 	private AudioSource emotionAudio;
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -50,14 +52,15 @@ public class Emotions : MonoBehaviour
 
 		carScript = GetComponentInParent<Car>();
 
+		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 		emotionAudio = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (!carScript.isCrazy)
-		{
+		if ((gameManager.isGameActive || gameManager.isGameOver) && !carScript.isCrazy)
+        {
 			UpdateEmotion(carScript.moveState == MoveStates.Stop);
 		}
 			

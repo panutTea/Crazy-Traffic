@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "call">
+	<Stroke>
+		<Point X = "233.8073" Y = "1354.696" T = "0" Pressure = "0" />
+		<Point X = "172.4995" Y = "1346.864" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>

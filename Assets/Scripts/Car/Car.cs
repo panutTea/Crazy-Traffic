@@ -72,8 +72,6 @@ public class Car : MonoBehaviour
 		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 		currentMaxSpeed = maxSpeed;
 		currentSpeed = currentMaxSpeed;
-
-		carAudio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -108,12 +106,6 @@ public class Car : MonoBehaviour
 		else if (moveState != MoveStates.Stop)
 		{
 			Stop();
-			if (checkCrash == true) 
-			{
-				carAudio.PlayOneShot(crashSound, 1.0f);
-				checkCrash = false;
-			}
-			
 		}
 		
 		
@@ -142,14 +134,21 @@ public class Car : MonoBehaviour
 
 	public void ReleaseCar() 
 	{
-		isForcedStop = false;
+		
+			Debug.Log("Release!!");
+			isForcedStop = false;
+		
 	}
 	
 	public void StopCar() 
 	{
-		isForcedStop = true;
-		currentMaxSpeed = 0;
+        if (laneStatus == LaneStatus.OnFromLane) {
+			Debug.Log("Stop!!");
+			isForcedStop = true;
+			currentMaxSpeed = 0;
+		}
 	}
+		
 	
 	// Set car to move for moveState and animation
 	private void Moving() 
@@ -274,13 +273,11 @@ public class Car : MonoBehaviour
 		}
 	}
 
-
-    public void Crash()
+	public void Crash()
 	{
 		isCrash = true;
 		currentMaxSpeed = 0;
 		Debug.Log(gameObject.name+" Crash");
-		checkCrash = true;
 	}
 
 

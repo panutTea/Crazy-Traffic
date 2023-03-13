@@ -5,4 +5,7 @@ The Crazy Traffic project is developed to learn how to develop a VR game using U
 *This project is currently under development.*
 
 ## Screenshot
-![Screenshot_1](https://drive.google.com/file/d/1TAmjvMX2UAvrBaU8f1XBeXIVdfQo__Mv/view?usp=share_link)
+![Screenshot_1](Screenshot/Screenshot_1.png)
+![Screenshot_1](Screenshot/Screenshot_2.png)
+![Screenshot_1](Screenshot/Screenshot_3.png)
+![Screenshot_1](Screenshot/Screenshot_4.png)

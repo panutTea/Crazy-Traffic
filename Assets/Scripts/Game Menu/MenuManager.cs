@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public GameObject guide;
     public GameObject allPages;
     public GameObject nextBtn;
+    public GameObject backBtn;
     public int guidePage = 1;
 
     // Start is called before the first frame update
@@ -31,6 +32,22 @@ public class MenuManager : MonoBehaviour
             StartGame();
         }
         Debug.Log(guidePage);
+        if (guidePage == 1)
+        {
+            backBtn.SetActive(false);
+        }
+        else
+        {
+            backBtn.SetActive(true);
+        }
+        if(guidePage == allPages.transform.childCount)
+        {
+            nextBtn.SetActive(false);
+        }
+        else
+        {
+            nextBtn.SetActive(true);
+        }
     }
 
     public void StartGame()
@@ -48,34 +65,28 @@ public class MenuManager : MonoBehaviour
         allPages.transform.GetChild(guidePage - 1).gameObject.SetActive(false);
         guidePage += 1;
         allPages.transform.GetChild(guidePage - 1).gameObject.SetActive(true);
-        if (guidePage == allPages.transform.childCount)
-        {
-            nextBtn.SetActive(false);
-        }
-
-        //allPages.SetActive(false);
     }
-    public void Guide()
+    public void OpenGuide()
     {
         menu.SetActive(false);
         guide.SetActive(true);
-        //allPages.SetActive(false);
-        //pages[guidePage - 1].SetActive(true);
+    }
+    public void ExitGuide()
+    {
+        allPages.transform.GetChild(guidePage - 1).gameObject.SetActive(false);
+        guidePage = 1;
+        allPages.transform.GetChild(guidePage - 1).gameObject.SetActive(true);
+        guide.SetActive(false);
+        menu.SetActive(true);
     }
     public void BackPage()
     {
         if (guidePage == 1)
         {
-            menu.SetActive(true);
-            guide.SetActive(false);
+            
         }
         else
         {
-            if (guidePage == allPages.transform.childCount)
-            {
-                nextBtn.SetActive(true);
-            }
-            //allPages.SetActive(false);
             allPages.transform.GetChild(guidePage - 1).gameObject.SetActive(false);
             guidePage -= 1;
             allPages.transform.GetChild(guidePage - 1).gameObject.SetActive(true);

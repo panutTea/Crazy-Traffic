@@ -132,7 +132,7 @@ public class Car : MonoBehaviour
 		
 	}
 	public void setDefaultSpeed()
-    {
+	{
 		currentMaxSpeed = maxSpeed;
 		currentSpeed = currentMaxSpeed;
 	}
@@ -140,20 +140,20 @@ public class Car : MonoBehaviour
 	{
 		Debug.Log("Release");
 		if (!isCrash)
-        {
+		{
 			isForcedStop = false;
 			currentMaxSpeed = maxSpeed;
 		}
 		
-        if (!gameManager.isGameActive)
-        {
+		if (!gameManager.isGameActive)
+		{
 			gameManager.SetGameAvtive();
-        }
+		}
 	}
 	
 	public void StopCar() 
 	{
-        if (laneStatus == LaneStatus.OnFromLane && !isCrazy) {
+		if (laneStatus == LaneStatus.OnFromLane && !isCrazy) {
 			Debug.Log("Stop!!");
 			isForcedStop = true;
 			currentMaxSpeed = 0;
@@ -286,6 +286,7 @@ public class Car : MonoBehaviour
 
 	public void Crash()
 	{
+		carAudio.PlayOneShot(crashSound, 1.0f);
 		isCrash = true;
 		currentMaxSpeed = 0;
 		Debug.Log(gameObject.name+" Crash");

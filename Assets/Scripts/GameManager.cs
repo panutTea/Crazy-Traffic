@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         
         isGameActive = false;
         isGameOver = true;
-        lastScore.text = "Score: " + score;
+        lastScore.text = score.ToString();
         gameOver.gameObject.SetActive(true);
         Debug.Log("GameOver isGameActive = "+ isGameActive);
 

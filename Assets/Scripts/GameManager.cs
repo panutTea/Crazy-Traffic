@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
     public Image gameOver;
+    public RawImage startGameText;
     public TextMeshProUGUI lastScore;
     public TextMeshProUGUI ScoreText;
 
@@ -62,10 +63,10 @@ public class GameManager : MonoBehaviour
         score = 0;
         UpdateScore(0);
     }
-
     public void SetGameAvtive()
     {
         isGameActive = true;
+        startGameText.gameObject.SetActive(false);
     }
     public void GameOver()
     {

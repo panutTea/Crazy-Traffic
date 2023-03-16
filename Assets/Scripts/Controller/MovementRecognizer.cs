@@ -31,7 +31,10 @@ public class MovementRecognizer : MonoBehaviour
     [System.Serializable]
     public class UnityStringEvent : UnityEvent<string> { }
     public UnityStringEvent OnRecognized;
-
+    //Sound
+    public AudioClip whistleAudio;
+    public AudioClip whistle2Audio;
+    private AudioSource playerAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,7 @@ public class MovementRecognizer : MonoBehaviour
         {
             trainingSet.Add(GestureIO.ReadGestureFromFile(item));
         }
+        playerAudio = GetComponent<AudioSource>();
     }
 
     public void onCallPressed()
@@ -48,7 +52,6 @@ public class MovementRecognizer : MonoBehaviour
         Debug.Log("now call pressed");
         isPressed = true;
         command = MovementStates.Call;
-
     }
     public void onReleased()
     {
@@ -131,6 +134,7 @@ public class MovementRecognizer : MonoBehaviour
                 {
                     OnRecognized.Invoke("call");
                     Debug.Log(result.GestureClass + result.Score);
+                    playerAudio.PlayOneShot(whistle2Audio, 1.0f);
                 }
             }
             if (command == MovementStates.Stop && result.GestureClass == "stop")
@@ -139,6 +143,7 @@ public class MovementRecognizer : MonoBehaviour
                 {
                     OnRecognized.Invoke("stop");
                     Debug.Log(result.GestureClass + result.Score);
+                    playerAudio.PlayOneShot(whistleAudio, 1.0f);
                 }
             }
                 

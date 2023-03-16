@@ -41,8 +41,11 @@ public class PlayerSpecialUsing : MonoBehaviour
 	
 	public void UseHallsCool()
 	{
-		playerAudio.PlayOneShot(hallsCoolSound, 1.0f);
-		OnRecognized.Invoke("useHallsCool");
-		hallsCoolNum--;
+		if (hallsCoolNum > 0)
+        {
+			playerAudio.PlayOneShot(hallsCoolSound, 1.0f);
+			OnRecognized.Invoke("useHallsCool");
+			hallsCoolNum--;
+        }
 	}
 }

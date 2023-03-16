@@ -226,20 +226,14 @@ public class Car : MonoBehaviour
 			{
 				AdjustTheSpeed(hit, sensorStartPos);
 			}
-			else if(laneStatus == LaneStatus.OnFromLane)
+			else if(laneStatus == LaneStatus.OnFromLane || laneStatus == LaneStatus.OnCenter)
 			{
 				if (fromLane == hit.collider.gameObject.GetComponent<Car>().fromLane)
 				{
 					AdjustTheSpeed(hit, sensorStartPos);
 				}
 			}
-			else if (laneStatus == LaneStatus.OnCenter)
-			{
-				if (fromLane == hit.collider.gameObject.GetComponent<Car>().fromLane || (isCenterRay && targetLane == hit.collider.gameObject.GetComponent<Car>().targetLane))
-				{
-					AdjustTheSpeed(hit, sensorStartPos);
-				}
-			}
+
 			else if (laneStatus == LaneStatus.OnTargetLane)
 			{
 				if (targetLane == hit.collider.gameObject.GetComponent<Car>().targetLane)

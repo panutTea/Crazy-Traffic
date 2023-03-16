@@ -338,8 +338,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 10
+  MinDistance: 8
+  MaxDistance: 12
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -802,7 +802,7 @@ PrefabInstance:
     - target: {fileID: 2330849263216420043, guid: 9f17ef3cb7358c549a670a1b1e04da92,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348729287742518824, guid: 9f17ef3cb7358c549a670a1b1e04da92,
         type: 3}

@@ -54,22 +54,17 @@ public class Emotions : MonoBehaviour
 
 		carScript = GetComponentInParent<Car>();
 
-		// gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 		emotionAudio = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		// if ((gameManager.isGameActive || gameManager.isGameOver) && !carScript.isCrazy)
-		// {
-		// 	UpdateEmotion(carScript.moveState == MoveStates.Stop);
-		// }
-		if (!carScript.isCrazy)
+		if ((gameManager.isGameActive || gameManager.isGameOver) && !carScript.isCrazy)
 		{
 			UpdateEmotion(carScript.moveState == MoveStates.Stop);
 		}
-			
 	}
 
 	void UpdateEmotion(bool isIncrease) {

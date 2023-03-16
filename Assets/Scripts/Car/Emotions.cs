@@ -18,6 +18,8 @@ public class Emotions : MonoBehaviour
 	public GameObject emoji;
 	
 	public Sprite[] emojiIcons;
+	
+	[SerializeField] private GameObject fillGameobject;
 
 	[SerializeField]
 	// A value to increase emotion value per second
@@ -52,15 +54,19 @@ public class Emotions : MonoBehaviour
 
 		carScript = GetComponentInParent<Car>();
 
-		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+		// gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 		emotionAudio = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if ((gameManager.isGameActive || gameManager.isGameOver) && !carScript.isCrazy)
-        {
+		// if ((gameManager.isGameActive || gameManager.isGameOver) && !carScript.isCrazy)
+		// {
+		// 	UpdateEmotion(carScript.moveState == MoveStates.Stop);
+		// }
+		if (!carScript.isCrazy)
+		{
 			UpdateEmotion(carScript.moveState == MoveStates.Stop);
 		}
 			
@@ -98,6 +104,16 @@ public class Emotions : MonoBehaviour
 	
 	void OnEmoValuesChange(float value) 
 	{
+		// Change bar color
+		Image fillImage = fillGameobject.GetComponent<Image>();
+		if (value <= EMO_MAXIUM)
+		{
+			float g = (value > (EMO_MAXIUM / 2)) ? (EMO_MAXIUM - value) / (EMO_MAXIUM / 2) : 1;
+			float r = (value > (EMO_MAXIUM / 2)) ? 1 : value / (EMO_MAXIUM / 2);
+			
+			fillImage.color = new Color(r, g, 0, 1);
+		}
+		
 		// Check if emotion change or not
 		for (int i = emoStateValueList.Length - 1; i >= 0; i--) {
 			if (value >= emoStateValueList[i] * EMO_MAXIUM) {

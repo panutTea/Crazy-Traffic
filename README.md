@@ -19,4 +19,3 @@ The player can control the car using the Oculus Quest 2 controllers. The left co
 ![Screenshot_1](Screenshot/Screenshot_1.png)
 ![Screenshot_1](Screenshot/Screenshot_2.png)
 ![Screenshot_1](Screenshot/Screenshot_3.png)
-![Screenshot_1](Screenshot/Screenshot_4.png)

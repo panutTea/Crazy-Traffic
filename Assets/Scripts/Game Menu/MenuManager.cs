@@ -16,15 +16,20 @@ public class MenuManager : MonoBehaviour
 	public GameObject player;
 	public GameObject menu;
 	public GameObject guide;
+	public GameObject toggle;
 	public GameObject allPages;
 	public GameObject nextBtn;
 	public GameObject backBtn;
 	public int guidePage = 1;
+	private bool isHandMovement = false;
+	public RawImage toggleBtnImage;
+	public Texture enable;
+	public Texture disable;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-	 
+		toggleBtnImage.texture = isHandMovement ? enable : disable;
 	}
 
 	// Update is called once per frame
@@ -37,7 +42,7 @@ public class MenuManager : MonoBehaviour
 			Debug.Log("Start Game");
 			StartGame();
 		}
-		Debug.Log(guidePage);
+		//Debug.Log(guidePage);
 		if (guidePage == 1)
 		{
 			backBtn.SetActive(false);
@@ -58,7 +63,15 @@ public class MenuManager : MonoBehaviour
 
 	public void StartGame()
 	{
-		SceneManager.LoadScene("City Scene");
+        if (isHandMovement)
+        {
+			SceneManager.LoadScene("City Scene Movement");
+		}
+        else
+        {
+			SceneManager.LoadScene("City Scene Button");
+		}
+		
 	}
 
 	public void ExitGame()
@@ -102,5 +115,11 @@ public class MenuManager : MonoBehaviour
 			guidePage -= 1;
 			allPages.transform.GetChild(guidePage - 1).gameObject.SetActive(true);
 		}
+	}
+
+	public void ToggleMode()
+    {
+		isHandMovement = !isHandMovement;
+		toggleBtnImage.texture = isHandMovement ? enable : disable;
 	}
 }

@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Menu.unity
     guid: 0c656e509c0d032478c6f795db892a6e
   - enabled: 1
-    path: Assets/Scenes/City Scene.unity
-    guid: a26e31573e525a74dadb1e41b050ccbb
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/City Scene Button.unity
+    guid: 045d6c49c533ea24aaac256a4c3ed3ef
+  - enabled: 1
+    path: Assets/Scenes/City Scene Movement.unity
+    guid: 2a223632f1d33df47ba4f8cb6c0f2e5f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

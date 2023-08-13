@@ -86,8 +86,7 @@ public class GameManager : MonoBehaviour
     {
         // Reset the game state to the beginning
         gameOver.gameObject.SetActive(false);
-        SceneManager.LoadScene("City Scene");
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void BackToMenu()
     {

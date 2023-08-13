@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
 
 	public GameObject player;
 	public GameObject menu;
+	public GameObject credit;
 	public GameObject guide;
 	public GameObject toggle;
 	public GameObject allPages;
@@ -94,6 +95,16 @@ public class MenuManager : MonoBehaviour
 	{
 		menu.SetActive(false);
 		guide.SetActive(true);
+	}
+	public void OpenCredit()
+	{
+		menu.SetActive(false);
+		credit.SetActive(true);
+	}
+	public void ExitCredit()
+	{
+		credit.SetActive(false);
+		menu.SetActive(true);
 	}
 	public void ExitGuide()
 	{
